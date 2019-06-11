@@ -3,11 +3,8 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
-import { Bar, Doughnut } from "react-chartjs-2";
 
-import PromoPlanner from "./PromoPlanner";
-
-const PromoCalendar = class PromoCalendar extends React.Component {
+class PromoCalendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,11 +23,10 @@ const PromoCalendar = class PromoCalendar extends React.Component {
           columnDefs={this.state.columnDefs}
           rowData={this.state.rowData}
         />
-        <PromoPlanner />
       </div>
     );
   }
-};
+}
 
 const columns = [
   {

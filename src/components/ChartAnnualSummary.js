@@ -8,7 +8,11 @@ class ChartAnnualSummary extends React.Component {
   }
 
   render() {
-    return <Doughnut data={annualSummaryScanData} />;
+    return (
+      <React.Fragment>
+        <Doughnut data={annualSummaryScanData} />;
+      </React.Fragment>
+    );
   }
 }
 

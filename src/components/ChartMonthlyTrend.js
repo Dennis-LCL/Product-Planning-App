@@ -8,7 +8,11 @@ class ChartMonthlyTrend extends React.Component {
   }
 
   render() {
-    return <Bar data={kpiTrendData} />;
+    return (
+      <React.Fragment>
+        <Bar data={kpiTrendData} />;
+      </React.Fragment>
+    );
   }
 }
 

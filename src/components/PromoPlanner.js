@@ -4,7 +4,7 @@ import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
 
-const PromoPlanner = class PromoPlanner extends React.Component {
+class PromoPlanner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,7 @@ const PromoPlanner = class PromoPlanner extends React.Component {
       </div>
     );
   }
-};
+}
 
 const columns = [
   {
@@ -76,7 +76,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "FEB",
@@ -87,7 +87,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "MAR",
@@ -98,7 +98,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "APR",
@@ -109,7 +109,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "MAY",
@@ -120,7 +120,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "JUN",
@@ -131,7 +131,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "JUL",
@@ -142,7 +142,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "AUG",
@@ -153,7 +153,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "SEP",
@@ -164,7 +164,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "OCT",
@@ -175,7 +175,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "NOV",
@@ -186,7 +186,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "DEC",
@@ -197,7 +197,7 @@ const columns = [
     filter: true,
     editable: true,
     cellEditor: "agSelectCellEditor",
-    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
+    cellEditorParams: { values: ["", "10% Off", "30% Off", "50% Off"] }
   }
 ];
 
