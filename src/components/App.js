@@ -1,12 +1,18 @@
 import React from "react";
 import logo from "../assets/logo.svg";
 import PromoCalendar from "./PromoCalendar";
-import "../styles/App.css";
+import ChartAnnualSummary from "./ChartAnnualSummary";
+import ChartMonthlyTrend from "./ChartMonthlyTrend";
+import PromoPlanner from "./PromoPlanner";
+// import "../styles/App.css";
 
 function App() {
   return (
     <React.Fragment>
       <PromoCalendar />
+      <PromoPlanner />
+      <ChartAnnualSummary />
+      <ChartMonthlyTrend />
     </React.Fragment>
   );
 }

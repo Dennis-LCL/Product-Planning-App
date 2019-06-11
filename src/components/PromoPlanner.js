@@ -1,6 +1,5 @@
 import React from "react";
 import { AgGridReact } from "ag-grid-react";
-import { AutoWidthCalculator } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";

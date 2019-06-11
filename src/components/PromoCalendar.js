@@ -1,6 +1,5 @@
 import React from "react";
 import { AgGridReact } from "ag-grid-react";
-import { AutoWidthCalculator } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
@@ -23,8 +22,6 @@ const PromoCalendar = class PromoCalendar extends React.Component {
         className="ag-theme-balham"
         style={{ height: "180px", width: "680px" }}
       >
-        <Doughnut data={annualSummaryScanData} />
-        <Bar data={kpiTrendData} />
         <AgGridReact
           columnDefs={this.state.columnDefs}
           rowData={this.state.rowData}
@@ -153,45 +150,5 @@ const rows = [
     nonPromoWeek: 7
   }
 ];
-
-const kpiTrendData = {
-  labels: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ],
-  datasets: [
-    {
-      label: "Sales ($M)",
-      type: "line",
-      data: [120, 150, 80, 100, 200, 70, 120, 150, 100, 90, 100, 250]
-    },
-    {
-      label: "Sales Target ($M)",
-      type: "line",
-      data: [150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150, 150]
-    },
-    {
-      label: "Budget Sufficiency ($M)",
-      type: "bar",
-      data: [20, -20, -30, 20, -40, -30, 20, -20, -30, 20, -20, -80]
-    }
-  ]
-};
-
-const annualSummaryScanData = {
-  labels: ["Scan Actual ($M)", "Gap vs. Target ($M)"],
-  datasets: [{ data: [1000, 800] }],
-  backgroundColor: ["#36A2EB", "#FF6384"]
-};
 
 export default PromoCalendar;
