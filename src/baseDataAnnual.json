@@ -1,0 +1,28 @@
+[
+ {
+   "id": "A01-2020",
+   "brand": "Boldie",
+   "skuGroup": "Shampoo 250ml",
+   "code": "A01",
+   "skuDesc": "Drop Your Hair Shampoo",
+   "year": 2020,
+   "scanTarget": 100000,
+   "givTarget": 60000,
+   "scanUnitForecast": 11000,
+   "scanForecast": 80000,
+   "scanDealTotalForecast": 30000,
+   "shipmentUnitForecast": 11000,
+   "givForecast": 49500,
+   "budgetForecast": 24750,
+   "salesDeductForecast": 30000,
+   "sufficiencyForecast": -5250,
+   "scanUnitActual": 0,
+   "scanActual": 0,
+   "scanDealTotalActual": 0,
+   "shipmentUnitActual": 0,
+   "givActual": 0,
+   "budgetActual": 0,
+   "salesDeductActual": 0,
+   "sufficiencyActual": 0
+ }
+]
