@@ -4,7 +4,9 @@ import { AutoWidthCalculator } from "ag-grid-community";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-balham.css";
 import "ag-grid-community/dist/styles/ag-theme-material.css";
-import { Line, Bar } from "react-chartjs-2";
+import { Bar, Doughnut } from "react-chartjs-2";
+
+import PromoPlanner from "./PromoPlanner";
 
 const PromoCalendar = class PromoCalendar extends React.Component {
   constructor(props) {
@@ -21,11 +23,13 @@ const PromoCalendar = class PromoCalendar extends React.Component {
         className="ag-theme-balham"
         style={{ height: "180px", width: "680px" }}
       >
+        <Doughnut data={annualSummaryScanData} />
         <Bar data={kpiTrendData} />
         <AgGridReact
           columnDefs={this.state.columnDefs}
           rowData={this.state.rowData}
         />
+        <PromoPlanner />
       </div>
     );
   }
@@ -182,6 +186,12 @@ const kpiTrendData = {
       data: [20, -20, -30, 20, -40, -30, 20, -20, -30, 20, -20, -80]
     }
   ]
+};
+
+const annualSummaryScanData = {
+  labels: ["Scan Actual ($M)", "Gap vs. Target ($M)"],
+  datasets: [{ data: [1000, 800] }],
+  backgroundColor: ["#36A2EB", "#FF6384"]
 };
 
 export default PromoCalendar;
