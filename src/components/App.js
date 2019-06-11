@@ -9,8 +9,6 @@ import PromoPlanner from "./PromoPlanner";
 function App() {
   return (
     <React.Fragment>
-      <PromoCalendar />
-      <PromoPlanner />
       <ChartAnnualSummary />
       <ChartMonthlyTrend />
     </React.Fragment>
