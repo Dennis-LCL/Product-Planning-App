@@ -74,7 +74,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "FEB",
@@ -83,7 +85,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "MAR",
@@ -92,7 +96,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "APR",
@@ -101,7 +107,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "MAY",
@@ -110,7 +118,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "JUN",
@@ -119,7 +129,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "JUL",
@@ -128,7 +140,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "AUG",
@@ -137,7 +151,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "SEP",
@@ -146,7 +162,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "OCT",
@@ -155,7 +173,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "NOV",
@@ -164,7 +184,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   },
   {
     headerName: "DEC",
@@ -173,7 +195,9 @@ const columns = [
     resizable: true,
     sortable: true,
     filter: true,
-    editable: true
+    editable: true,
+    cellEditor: "agSelectCellEditor",
+    cellEditorParams: { values: ["10% Off", "30% Off", "50% Off"] }
   }
 ];
 
