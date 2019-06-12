@@ -4,42 +4,47 @@ class PromoCalendar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productMaster: props.productMaster
+      productMaster: props.productMaster,
+      promoTypes: props.promoTypes
     };
   }
 
   render() {
-    // Construct the PromoCalendar table columns
-    let promoCalendarColumns;
-    let productAttributeColumns;
+    // Construct the columns to show product attributes from product master
     const productExist = this.state.productMaster.length !== 0 && true;
-    const defaultColumns = (
+    const productAttributes =
+      productExist && Object.keys(this.state.productMaster[0]);
+    const productAttributeColumns = productAttributes ? (
+      productAttributes.map(attribute => <th>{attribute}</th>)
+    ) : (
+      <th>Product</th>
+    );
+
+    // Construct the columns to show promo types from promo types
+    const promoTypeExist = this.state.promoTypes.length !== 0 && true;
+    const promoTypeColumns = promoTypeExist ? (
+      this.state.promoTypes.map(promoType => <th>{promoType}</th>)
+    ) : (
+      <th>Promo Type</th>
+    );
+
+    // Construct the promoCalendarColumns
+    const promoCalendarColumns = (
       <thead>
         <tr>
-          <th>Product</th>
+          {productAttributeColumns}
+          {promoTypeColumns}
           <th>Non-Promo Week</th>
         </tr>
       </thead>
     );
-
-    if (productExist) {
-      // const firstProduct = this.state.productMaster[0];
-      // const expectedColumns = Object.keys(firstProduct);
-      const productAttributes = Object.keys(this.state.productMaster[0]);
-      productAttributeColumns = productAttributes.map(column => {
-        return <th>{column}</th>;
-      });
-      promoCalendarColumns = (
-        <thead>
-          <tr>
-            {productAttributeColumns}
-            <th>Non-Promo Week</th>
-          </tr>
-        </thead>
-      );
-    } else {
-      promoCalendarColumns = defaultColumns;
-    }
+    // if (productExist) {
+    //   productAttributeColumns = productAttributes.map(column => {
+    //     return <th>{column}</th>;
+    //   });
+    // } else {
+    //   promoCalendarColumns = <th>Product</th>;
+    // }
 
     // Fill up the PromoCalendar table with product from product master
     const promoCalendarRows = this.state.productMaster.map(product => {

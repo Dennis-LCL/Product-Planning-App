@@ -9,7 +9,10 @@ import ChartMonthlyTrend from "./ChartMonthlyTrend";
 function App() {
   return (
     <React.Fragment>
-      <PromoCalendar productMaster={mockProductMaster} />
+      <PromoCalendar
+        productMaster={mockProductMaster}
+        promoTypes={mockPromoTypes}
+      />
       <ChartAnnualSummary />
       <ChartMonthlyTrend />
     </React.Fragment>
@@ -36,5 +39,7 @@ const mockProductMaster = [
     desc: "Drop Your Hair Shampoo"
   }
 ];
+
+const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
 
 export default App;

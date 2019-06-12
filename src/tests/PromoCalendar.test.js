@@ -25,36 +25,58 @@ The App should show me a Promo Calendar(a table) with below initial condition:
 */
 
 describe("Promo Calendar's initial condition when user launches it the first time.", () => {
-  describe("PromoCalendar component should be rendered with required DOM nodes.", () => {
+  describe.only("PromoCalendar component should be rendered with required DOM nodes.", () => {
     it("should render and empty PromoCalendar component.", () => {
-      const { getByText } = render(<PromoCalendar productMaster={[]} />);
+      const { getByText } = render(
+        <PromoCalendar productMaster={[]} promoTypes={[]} />
+      );
       expect(!!getByText).toBeTruthy();
     });
     it("should render a component title (h2 tag) says 'Promo Calendar'", () => {
-      const { getByText } = render(<PromoCalendar productMaster={[]} />);
+      const { getByText } = render(
+        <PromoCalendar productMaster={[]} promoTypes={[]} />
+      );
       expect(getByText("Promo Calendar")).toBeInTheDocument();
     });
     it("should render a work space title (h3 tag) for later showing year, customer, category", () => {
-      const { getByText } = render(<PromoCalendar productMaster={[]} />);
+      const { getByText } = render(
+        <PromoCalendar productMaster={[]} promoTypes={[]} />
+      );
       expect(getByText("Work Space:")).toBeInTheDocument();
     });
     it("should render an empty 1R1C table", () => {
-      const { getByText } = render(<PromoCalendar productMaster={[]} />);
+      const { getByText } = render(
+        <PromoCalendar productMaster={[]} promoTypes={[]} />
+      );
       expect(getByText("Non-Promo Week")).toBeInTheDocument();
       expect(getByText("Fake Product Numero Uno")).toBeInTheDocument();
     });
   });
 
-  describe("The Promo Calendar should have complete columns.", () => {
+  describe.only("The Promo Calendar should have complete columns.", () => {
     it("should have all product attributes as columns based on product master passed in as props.", () => {
       const { getByText } = render(
-        <PromoCalendar productMaster={mockProductMaster} />
+        <PromoCalendar
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+        />
       );
-      const expectedColumns = Object.keys(mockProductMaster[0]);
-      console.log(expectedColumns);
-      // expect(getByText(expectedColumns[0])).toBeInTheDocument();
-      for (let i = 0; i < expectedColumns.length; i++) {
-        expect(getByText(expectedColumns[i])).toBeInTheDocument();
+      const productAttributes = Object.keys(mockProductMaster[0]);
+      console.log(productAttributes);
+      for (let i = 0; i < productAttributes.length; i++) {
+        expect(getByText(productAttributes[i])).toBeInTheDocument();
+      }
+    });
+    it("should have all promo types as columns based on authorized product type passed in as props ", () => {
+      const { getByText } = render(
+        <PromoCalendar
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+        />
+      );
+      console.log(mockPromoTypes);
+      for (let i = 0; i < mockPromoTypes.length; i++) {
+        expect(getByText(mockPromoTypes[i])).toBeInTheDocument();
       }
     });
   });
@@ -62,33 +84,38 @@ describe("Promo Calendar's initial condition when user launches it the first tim
   describe.skip("The Promo Calendar should have all products on rows.", () => {
     it("should render all products from the product master passed in as props for the component.", () => {
       const { getAllByText } = render(
-        <PromoCalendar productMaster={mockProductMaster} />
+        <PromoCalendar
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+        />
       );
       const numberOfRenderedProducts = getAllByText(/Shampoo/i).length;
       expect(numberOfRenderedProducts).toBe(mockProductMaster.length);
     });
   });
 
-  describe("Each Product's initial value for Promo Types should be 0 with Non-Promo Week set to 52.", () => {});
+  describe.skip("Each Product's initial value for Promo Types should be 0 with Non-Promo Week set to 52.", () => {});
 });
 
 const mockProductMaster = [
   {
-    brand: "Boldie",
-    group: "Shampoo 250ml",
-    code: "A01",
-    desc: "Drop Your Hair Shampoo"
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A01",
+    Description: "Drop Your Hair Shampoo"
   },
   {
-    brand: "Boldie",
-    group: "Shampoo 250ml",
-    code: "A01",
-    desc: "Drop Your Hair Shampoo"
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A01",
+    Description: "Drop Your Hair Shampoo"
   },
   {
-    brand: "Boldie",
-    group: "Shampoo 250ml",
-    code: "A01",
-    desc: "Drop Your Hair Shampoo"
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A01",
+    Description: "Drop Your Hair Shampoo"
   }
 ];
+
+const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
