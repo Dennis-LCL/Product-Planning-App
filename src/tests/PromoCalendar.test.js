@@ -24,7 +24,7 @@ The App should show me a Promo Calendar(a table) with below initial condition:
 */
 
 describe("Promo Calendar's initial condition when user launches it the first time.", () => {
-  describe.only("PromoCalendar component should be rendered with required DOM nodes.", () => {
+  describe("PromoCalendar component should be rendered with required DOM nodes.", () => {
     it("should render and empty PromoCalendar component.", () => {
       const { getByText } = render(
         <PromoCalendar productMaster={[]} promoTypes={[]} />
@@ -52,7 +52,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
     });
   });
 
-  describe.only("The Promo Calendar should have complete columns.", () => {
+  describe("The Promo Calendar should have complete columns.", () => {
     it("should have all product attributes as columns based on product master passed in as props.", () => {
       const { getByText } = render(
         <PromoCalendar
@@ -88,13 +88,17 @@ describe("Promo Calendar's initial condition when user launches it the first tim
           promoTypes={mockPromoTypes}
         />
       );
-      const numberOfRenderedProducts = getAllByText(/Shampoo/i).length;
+      const numberOfRenderedProducts = getAllByText(/Boldie/i).length;
       expect(numberOfRenderedProducts).toBe(mockProductMaster.length);
     });
-    it("should populate the product attributes correctly per Promo Calendar columns.", () => {});
+    it.skip("should populate the product attributes correctly per Promo Calendar columns.", () => {});
   });
 
-  describe.skip("Each Product's initial value for Promo Types should be 0 with Non-Promo Week set to 52.", () => {});
+  describe("Each Product's initial value for Promo Types should be 0 with Non-Promo Week set to 52.", () => {
+    it("should render input fields for each product-product type combination.", () => {
+      return false;
+    });
+  });
 });
 
 const mockProductMaster = [
@@ -115,7 +119,13 @@ const mockProductMaster = [
     Group: "Shampoo 250ml",
     Code: "A03",
     Description: "Burn The Root Shampoo"
+  },
+  {
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A04",
+    Description: "Amplify The Dandruff Shampoo"
   }
 ];
 
-const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
+const mockPromoTypes = ["10% Off", "20% off", "30% Off", "50% Off"];
