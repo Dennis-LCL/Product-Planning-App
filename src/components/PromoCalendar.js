@@ -10,17 +10,33 @@ class PromoCalendar extends React.Component {
 
   render() {
     // Construct the PromoCalendar table columns
-    let promoCalendarColumns = "";
-    console.log(this.state.productMaster.length === 0);
+    let promoCalendarColumns;
+    let productAttributeColumns;
     const productExist = this.state.productMaster.length !== 0 && true;
-    const defaultColumns = <th>Product</th>;
+    const defaultColumns = (
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Non-Promo Week</th>
+        </tr>
+      </thead>
+    );
 
     if (productExist) {
-      const firstProduct = this.state.productMaster[0];
-      const expectedColumns = Object.keys(firstProduct);
-      promoCalendarColumns = expectedColumns.map(column => {
+      // const firstProduct = this.state.productMaster[0];
+      // const expectedColumns = Object.keys(firstProduct);
+      const productAttributes = Object.keys(this.state.productMaster[0]);
+      productAttributeColumns = productAttributes.map(column => {
         return <th>{column}</th>;
       });
+      promoCalendarColumns = (
+        <thead>
+          <tr>
+            {productAttributeColumns}
+            <th>Non-Promo Week</th>
+          </tr>
+        </thead>
+      );
     } else {
       promoCalendarColumns = defaultColumns;
     }
@@ -41,12 +57,7 @@ class PromoCalendar extends React.Component {
         <h2>Promo Calendar</h2>
         <h3>Work Space:</h3>
         <table>
-          <thead>
-            <tr>
-              {promoCalendarColumns}
-              <th>Non-Promo Week</th>
-            </tr>
-          </thead>
+          {promoCalendarColumns}
           <tbody>
             <tr>
               <td>Fake Product Numero Uno</td>
