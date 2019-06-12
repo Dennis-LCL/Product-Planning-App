@@ -21,22 +21,22 @@ function App() {
 
 const mockProductMaster = [
   {
-    brand: "Boldie",
-    group: "Shampoo 250ml",
-    code: "A01",
-    desc: "Drop Your Hair Shampoo"
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A01",
+    Description: "Drop Your Hair Shampoo"
   },
   {
-    brand: "Boldie",
-    group: "Shampoo 250ml",
-    code: "A01",
-    desc: "Drop Your Hair Shampoo"
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A01",
+    Description: "Drop Your Hair Shampoo"
   },
   {
-    brand: "Boldie",
-    group: "Shampoo 250ml",
-    code: "A01",
-    desc: "Drop Your Hair Shampoo"
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A01",
+    Description: "Drop Your Hair Shampoo"
   }
 ];
 

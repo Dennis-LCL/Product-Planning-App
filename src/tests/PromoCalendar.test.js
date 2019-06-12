@@ -81,7 +81,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
     });
   });
 
-  describe.skip("The Promo Calendar should have all products on rows.", () => {
+  describe("The Promo Calendar should have all products on rows.", () => {
     it("should render all products from the product master passed in as props for the component.", () => {
       const { getAllByText } = render(
         <PromoCalendar
@@ -92,6 +92,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
       const numberOfRenderedProducts = getAllByText(/Shampoo/i).length;
       expect(numberOfRenderedProducts).toBe(mockProductMaster.length);
     });
+    it("should populate the product attributes correctly per Promo Calendar columns.", () => {});
   });
 
   describe.skip("Each Product's initial value for Promo Types should be 0 with Non-Promo Week set to 52.", () => {});

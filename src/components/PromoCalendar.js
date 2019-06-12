@@ -38,24 +38,30 @@ class PromoCalendar extends React.Component {
         </tr>
       </thead>
     );
-    // if (productExist) {
-    //   productAttributeColumns = productAttributes.map(column => {
-    //     return <th>{column}</th>;
-    //   });
-    // } else {
-    //   promoCalendarColumns = <th>Product</th>;
-    // }
 
-    // Fill up the PromoCalendar table with product from product master
-    const promoCalendarRows = this.state.productMaster.map(product => {
-      return (
+    // Construct value for each product attribute
+    let promoCalendarRows = [];
+    if (productExist) {
+      const firstProductValues = Object.values(this.state.productMaster[0]);
+      console.log(firstProductValues);
+      promoCalendarRows = firstProductValue.
+    } else {
+      promoCalendarRows = (
         <tr>
-          <td>{product.desc}</td>
-          <td>52</td>
+          <td>Fake Product Numero Uno</td>
         </tr>
       );
-    });
-    console.log(promoCalendarRows);
+    }
+    // Fill up the PromoCalendar table with product from product master
+    // const promoCalendarRows = this.state.productMaster.map(product => {
+    //   return (
+    //     <tr>
+    //       <td>{product.desc}</td>
+    //       <td>52</td>
+    //     </tr>
+    //   );
+    // });
+    // console.log(promoCalendarRows);
 
     return (
       <React.Fragment>
