@@ -11,7 +11,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "test:watch": "react-scripts test --watch",    
+    "test:watch": "react-scripts test --watch",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

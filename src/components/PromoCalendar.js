@@ -40,28 +40,25 @@ class PromoCalendar extends React.Component {
     );
 
     // Construct value for each product attribute
-    let promoCalendarRows = [];
+
+    let productAttributeValues;
+    let productRows = [];
+
     if (productExist) {
-      const firstProductValues = Object.values(this.state.productMaster[0]);
-      console.log(firstProductValues);
-      promoCalendarRows = firstProductValue.
+      for (let i = 0; i < this.state.productMaster.length; i++) {
+        productAttributeValues = Object.values(this.state.productMaster[i]).map(
+          attribute => <td>{attribute}</td>
+        );
+        productRows.push(<tr>{productAttributeValues}</tr>);
+      }
     } else {
-      promoCalendarRows = (
+      productRows = (
         <tr>
           <td>Fake Product Numero Uno</td>
         </tr>
       );
     }
-    // Fill up the PromoCalendar table with product from product master
-    // const promoCalendarRows = this.state.productMaster.map(product => {
-    //   return (
-    //     <tr>
-    //       <td>{product.desc}</td>
-    //       <td>52</td>
-    //     </tr>
-    //   );
-    // });
-    // console.log(promoCalendarRows);
+    const promoCalendarRows = <tbody>{productRows}</tbody>;
 
     return (
       <React.Fragment>
@@ -69,16 +66,7 @@ class PromoCalendar extends React.Component {
         <h3>Work Space:</h3>
         <table>
           {promoCalendarColumns}
-          <tbody>
-            <tr>
-              <td>Fake Product Numero Uno</td>
-              <td>52</td>
-              <td />
-              <td />
-              <td />
-            </tr>
-            {promoCalendarRows}
-          </tbody>
+          {promoCalendarRows}
         </table>
       </React.Fragment>
     );
