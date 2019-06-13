@@ -111,6 +111,16 @@ describe("Promo Calendar's initial condition when user launches it the first tim
         expectedNumberOfProductPromoTypeCombos
       );
     });
+    it("should set the Non-Promo Week to 52 for each product.", () => {
+      const { getAllByText } = render(
+        <PromoCalendar
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+        />
+      );
+      expect(getAllByText("52").length).toBe(mockProductMaster.length);
+    });
+
     it.skip("should assign a unique ID for each input field, representing a product-promo type combination.", () => {
       return false;
     });

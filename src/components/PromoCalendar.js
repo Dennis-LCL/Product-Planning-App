@@ -59,6 +59,7 @@ class PromoCalendar extends React.Component {
           <tr>
             {productAttributeValues}
             {promoFrequencyCells}
+            <td>52</td>
           </tr>
         );
       }
