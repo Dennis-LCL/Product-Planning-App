@@ -150,8 +150,14 @@ const mockProductMaster = [
     Brand: "Boldie",
     Group: "Shampoo 250ml",
     Code: "A04",
-    Description: "Amplify The Dandruff Shampoo"
+    Description: "Let It Snow Shampoo"
+  },
+  {
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
+    Code: "A05",
+    Description: "Volumn Reduction Shampoo"
   }
 ];
 
-const mockPromoTypes = ["10% Off", "20% off", "30% Off", "50% Off"];
+const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
