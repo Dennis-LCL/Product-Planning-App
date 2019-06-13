@@ -71,7 +71,7 @@ The App should
 - Any Forecast Assumptions without value will be shown blank in the UI
 */
 describe("Forecast Assumptions when ONE Product-PromoType cell is clicked (i.e. focused) with KPIs found.", () => {
-  it("should show KPIs correctly when a Product-PromoType cell is clicked (i.e. focused).", () => {
+  it("should show KPIs correctly when a 'A01 10% Off' is clicked (i.e. focused).", () => {
     const { getByText } = render(
       <ForecastAssumptions
         productPromoTypeId="A01-10%"
@@ -89,6 +89,25 @@ describe("Forecast Assumptions when ONE Product-PromoType cell is clicked (i.e. 
     expect(getByText("0.25")).toBeInTheDocument();
     expect(getByText("90")).toBeInTheDocument();
     expect(getByText("1.83")).toBeInTheDocument();
+  });
+  it("should show KPIs correctly when a 'A01 30% Off' is clicked (i.e. focused).", () => {
+    const { getByText } = render(
+      <ForecastAssumptions
+        productPromoTypeId="A01-30%"
+        algorithm={mockAlgorithm}
+      />
+    );
+    expect(getByText("300")).toBeInTheDocument();
+    expect(getByText("100")).toBeInTheDocument();
+    expect(getByText("200")).toBeInTheDocument();
+    expect(getByText("3000")).toBeInTheDocument();
+    expect(getByText("15")).toBeInTheDocument();
+    expect(getByText("2700")).toBeInTheDocument();
+    expect(getByText("9")).toBeInTheDocument();
+    expect(getByText("1125")).toBeInTheDocument();
+    expect(getByText("0.25")).toBeInTheDocument();
+    expect(getByText("-1575")).toBeInTheDocument();
+    expect(getByText("1.11")).toBeInTheDocument();
   });
   it.skip("should show KPIs correctly when user click from one Product-PromoType cell to another.", () => {
     return false;
@@ -169,24 +188,6 @@ const mockAlgorithm = [
       FundRate: 0.25,
       NetSufficiency: 375,
       ROI: 0
-    }
-  },
-  {
-    ID: "",
-    Product: "",
-    PromoType: "",
-    KPIs: {
-      ScanUnit: null,
-      BaselineUnit: null,
-      IncrementalUnit: null,
-      IncrementalGIV: null,
-      BaseListPrice: null,
-      TotalCost: null,
-      ScanDealUnitCost: null,
-      TotalBudget: null,
-      FundRate: null,
-      NetSufficiency: null,
-      ROI: null
     }
   }
 ];

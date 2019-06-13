@@ -15,7 +15,7 @@ function App() {
         promoTypes={mockPromoTypes}
       />
       <ForecastAssumptions
-        productPromoTypeId="A01-10%"
+        productPromoTypeId="A01-30%"
         algorithm={mockAlgorithm}
       />
       <ChartAnnualSummary />
