@@ -95,7 +95,23 @@ describe("Promo Calendar's initial condition when user launches it the first tim
   });
 
   describe("Each Product's initial value for Promo Types should be 0 with Non-Promo Week set to 52.", () => {
-    it("should render input fields for each product-product type combination.", () => {
+    it("should render input fields for each product-promo type combination.", () => {
+      const { getAllByPlaceholderText } = render(
+        <PromoCalendar
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+        />
+      );
+
+      const numberOfProductPromoTypeCombos = getAllByPlaceholderText("--")
+        .length;
+      const expectedNumberOfProductPromoTypeCombos =
+        mockProductMaster.length * mockPromoTypes.length;
+      expect(numberOfProductPromoTypeCombos).toBe(
+        expectedNumberOfProductPromoTypeCombos
+      );
+    });
+    it.skip("should assign a unique ID for each input field, representing a product-promo type combination.", () => {
       return false;
     });
   });
