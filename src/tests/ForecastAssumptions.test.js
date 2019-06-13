@@ -74,7 +74,7 @@ describe("Forecast Assumptions when ONE Product-PromoType cell is clicked (i.e. 
   it("should show KPIs correctly when a 'A01 10% Off' is clicked (i.e. focused).", () => {
     const { getByText } = render(
       <ForecastAssumptions
-        productPromoTypeId="A01-10%"
+        productPromoTypeId="A01-10% Off"
         algorithm={mockAlgorithm}
       />
     );
@@ -93,7 +93,7 @@ describe("Forecast Assumptions when ONE Product-PromoType cell is clicked (i.e. 
   it("should show KPIs correctly when a 'A01 30% Off' is clicked (i.e. focused).", () => {
     const { getByText } = render(
       <ForecastAssumptions
-        productPromoTypeId="A01-30%"
+        productPromoTypeId="A01-30% Off"
         algorithm={mockAlgorithm}
       />
     );
@@ -119,7 +119,7 @@ describe("Forecast Assumptions when ONE Product-PromoType cell is clicked (i.e. 
 
 const mockAlgorithm = [
   {
-    ID: "A01-10%",
+    ID: "A01-10% Off",
     Product: "Drop Your Hair Shampoo",
     PromoType: "10% Off",
     KPIs: {
@@ -137,7 +137,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-30%",
+    ID: "A01-30% Off",
     Product: "Drop Your Hair Shampoo",
     PromoType: "30% Off",
     KPIs: {
@@ -155,7 +155,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-50%",
+    ID: "A01-50% Off",
     Product: "Drop Your Hair Shampoo",
     PromoType: "50% Off",
     KPIs: {

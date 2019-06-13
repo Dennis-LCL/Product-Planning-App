@@ -61,7 +61,7 @@ const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
 
 const mockAlgorithm = [
   {
-    ID: "A01-10%",
+    ID: "A01-10% Off",
     Product: "Drop Your Hair Shampoo",
     PromoType: "10% Off",
     KPIs: {
@@ -79,7 +79,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-30%",
+    ID: "A01-30% Off",
     Product: "Drop Your Hair Shampoo",
     PromoType: "30% Off",
     KPIs: {
@@ -97,7 +97,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-50%",
+    ID: "A01-50% Off",
     Product: "Drop Your Hair Shampoo",
     PromoType: "50% Off",
     KPIs: {

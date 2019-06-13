@@ -19,7 +19,7 @@ describe("PromoPlanner component should be rendered with required DOM nodes.", (
 describe("When ONE Product-PromoType cell is clicked in PromoCalendar (i.e. focused) and KPIs are found.", () => {
   it.only("should render input field under each Product-PromoType combination for users to click.", () => {
     const { getByText, fireEvent } = render(<PromoPlanner />);
-    const inputField = document.querySelector("#A01-10%");
+    const inputField = document.getElementById("A05-50% Off");
     expect(!!inputField).toBeTruthy();
   });
 

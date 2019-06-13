@@ -50,11 +50,17 @@ class PromoCalendar extends React.Component {
           attribute => <td>{attribute}</td>
         );
         // Add PromoCalendarInputCells into productRows
-        const promoFrequencyCells = this.state.promoTypes.map(promoType => (
-          <td>
-            <PromoCalendarInputCell />
-          </td>
-        ));
+        const promoFrequencyCells = this.state.promoTypes.map(promoType => {
+          // Construct the PromoCalendarInputCell ID
+          let promoCalendarInputCellId =
+            this.state.productMaster[i].Code + "-" + promoType;
+
+          return (
+            <td>
+              <PromoCalendarInputCell id={promoCalendarInputCellId} />
+            </td>
+          );
+        });
         productRows.push(
           <tr>
             {productAttributeValues}
@@ -85,8 +91,8 @@ class PromoCalendar extends React.Component {
   }
 }
 
-function PromoCalendarInputCell() {
-  return <input className="promoFrequency" placeholder="--" />;
+function PromoCalendarInputCell(props) {
+  return <input id={props.id} className="promoFrequency" placeholder="--" />;
 }
 
 export default PromoCalendar;
