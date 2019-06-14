@@ -6,9 +6,13 @@ const ForecastAssumptions = props => {
   let selectedKPIs;
 
   if (isIdReceived && isKPIsReceived) {
-    selectedKPIs = props.algorithm.find(
+    let algorithmFound = props.algorithm.find(
       productPromoType => productPromoType.ID === props.productPromoTypeId
-    ).KPIs;
+    );
+    selectedKPIs = algorithmFound ? algorithmFound.KPIs : defaultKPIs;
+    // selectedKPIs = props.algorithm.find(
+    //   productPromoType => productPromoType.ID === props.productPromoTypeId
+    // ).KPIs;
   } else {
     selectedKPIs = defaultKPIs;
   }
