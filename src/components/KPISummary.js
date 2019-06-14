@@ -1,16 +1,16 @@
 import React from "react";
 
-const KPISummary = ({ promoFrequency, forecastAssumptions }) => {
+const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
   let annualKPIs = { GIVForecast: 0 };
-  const isFrequencyReceived = promoFrequency.length !== 0 && true;
+  const isFrequencyReceived = productPromoTypeFrequency.length !== 0 && true;
   const isAssumptionsReceived = forecastAssumptions.length !== 0 && true;
 
   if (isFrequencyReceived && isAssumptionsReceived) {
     annualKPIs.GIVForecast =
-      promoFrequency[0].Frequency *
+      productPromoTypeFrequency[0].Frequency *
         forecastAssumptions[0].KPIs.ScanUnit *
         forecastAssumptions[0].KPIs.BaseListPrice +
-      promoFrequency[1].Frequency *
+      productPromoTypeFrequency[1].Frequency *
         forecastAssumptions[1].KPIs.ScanUnit *
         forecastAssumptions[1].KPIs.BaseListPrice;
   }

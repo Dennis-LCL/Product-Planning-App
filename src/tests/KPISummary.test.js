@@ -37,48 +37,48 @@ describe("KPISummary component should be rendered with required DOM nodes.", () 
 });
 
 describe("KPISummary component should calculate Annual Summary KPIs correctly.", () => {
-  let mockPromoFrequency = [];
+  let mockProductPromoTypeFrequency = [];
   describe("GIV Forecast should be calculated correctly.", () => {
     it.only("GIV Forecast = 0 as default value.", () => {
       const { getByLabelText } = render(
-        <KPISummary promoFrequency={[]} forecastAssumptions={[]} />
+        <KPISummary productPromoTypeFrequency={[]} forecastAssumptions={[]} />
       );
       expect(getByLabelText("GIV Forecast:").textContent).toBe("0");
     });
     it.only("A01 GIV Forecast = 78000 when there is no promotion.", () => {
-      mockPromoFrequency = [
+      mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 52 },
         { ID: "A01-10% Off", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
-          promoFrequency={mockPromoFrequency}
+          productPromoTypeFrequency={mockProductPromoTypeFrequency}
           forecastAssumptions={mockForecastAssumptions}
         />
       );
       expect(getByLabelText("GIV Forecast:").textContent).toBe("78000");
     });
     it.only("A01 GIV Forecast = 78300 with 1 week 10% Off.", () => {
-      mockPromoFrequency = [
+      mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 51 },
         { ID: "A01-10% Off", Frequency: 1 }
       ];
       const { getByLabelText } = render(
         <KPISummary
-          promoFrequency={mockPromoFrequency}
+          productPromoTypeFrequency={mockProductPromoTypeFrequency}
           forecastAssumptions={mockForecastAssumptions}
         />
       );
       expect(getByLabelText("GIV Forecast:").textContent).toBe("78300");
     });
     it.only("A01 GIV Forecast = 78600 with 2 week 10% Off.", () => {
-      mockPromoFrequency = [
+      mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 50 },
         { ID: "A01-10% Off", Frequency: 2 }
       ];
       const { getByLabelText } = render(
         <KPISummary
-          promoFrequency={mockPromoFrequency}
+          productPromoTypeFrequency={mockProductPromoTypeFrequency}
           forecastAssumptions={mockForecastAssumptions}
         />
       );
