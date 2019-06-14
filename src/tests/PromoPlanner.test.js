@@ -23,12 +23,9 @@ describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAs
     expect(!!inputField).toBeTruthy();
   });
 
-  it.only("should trigger ForecastAssumptions to show KPIs correctly when the 10% off input field is focused.", () => {
+  it("should trigger ForecastAssumptions to show KPIs correctly when the 10% off input field is focused.", () => {
     const { getByText } = render(<PromoPlanner />);
-
     const inputField = document.getElementById("A01-10% Off");
-    console.log(inputField);
-
     fireEvent.focus(inputField, { bubbles: false, cancelable: false });
 
     expect(getByText("120")).toBeInTheDocument();
@@ -43,30 +40,33 @@ describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAs
     expect(getByText("90")).toBeInTheDocument();
     expect(getByText("1.83")).toBeInTheDocument();
   });
-  it("should trigger ForecastAssumptions to show KPIs correctly when a 'A01 30% Off' is clicked (i.e. focused).", () => {
-    return false;
-    // const { getByText } = render(
-    //   <ForecastAssumptions
-    //     productPromoTypeId="A01-30%"
-    //     algorithm={mockAlgorithm}
-    //   />
-    // );
-    // expect(getByText("300")).toBeInTheDocument();
-    // expect(getByText("100")).toBeInTheDocument();
-    // expect(getByText("200")).toBeInTheDocument();
-    // expect(getByText("3000")).toBeInTheDocument();
-    // expect(getByText("15")).toBeInTheDocument();
-    // expect(getByText("2700")).toBeInTheDocument();
-    // expect(getByText("9")).toBeInTheDocument();
-    // expect(getByText("1125")).toBeInTheDocument();
-    // expect(getByText("0.25")).toBeInTheDocument();
-    // expect(getByText("-1575")).toBeInTheDocument();
-    // expect(getByText("1.11")).toBeInTheDocument();
-  });
-  it("should trigger ForecastAssumptions to show KPIs correctly when user click from one Product-PromoType cell to another.", () => {
+  it.skip("should trigger ForecastAssumptions to show blank KPIs when an input field is focused but KPIs are not found.", () => {
+    const { getByText } = render(<PromoPlanner />);
+    const inputField = document.getElementById("A05-50% Off");
+    fireEvent.focus(inputField, { bubbles: false, cancelable: false });
+
+    // How to test if screen is showing null???????
+    // expect(getByText(null)).toBeInTheDocument();
     return false;
   });
-  it("should trigger ForecastAssumptions to revert back to blank KPIs when user clicks something outside of the table.", () => {
+  it.skip("should trigger ForecastAssumptions to revert back to blank KPIs when user clicks something outside of the table.", () => {
+    const { getByText } = render(<PromoPlanner />);
+    const inputField = document.getElementById("A01-10% Off");
+    fireEvent.focus(inputField, { bubbles: false, cancelable: false });
+    fireEvent.blur(inputField, { bubbles: false, cancelable: false });
+
+    // expect(getByText("120")).not.toBeInTheDocument();
+    // expect(getByText("100")).not.toBeInTheDocument();
+    // expect(getByText("20")).not.toBeInTheDocument();
+    // expect(getByText("300")).not.toBeInTheDocument();
+    // expect(getByText("15")).not.toBeInTheDocument();
+    // expect(getByText("360")).not.toBeInTheDocument();
+    // expect(getByText("3")).not.toBeInTheDocument();
+    // expect(getByText("450")).not.toBeInTheDocument();
+    // expect(getByText("0.25")).not.toBeInTheDocument();
+    // expect(getByText("90")).not.toBeInTheDocument();
+    // expect(getByText("1.83")).not.toBeInTheDocument();
+    // How to find something that's not there??????
     return false;
   });
 });

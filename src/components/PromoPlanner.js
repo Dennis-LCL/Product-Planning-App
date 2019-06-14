@@ -8,12 +8,20 @@ class PromoPlanner extends React.Component {
     this.state = {
       focusedProductPromoType: ""
     };
-    this.handle_PromoCalendarInput_onFocus = this.handle_PromoCalendarInput_onFocus.bind(
+    // this.handle_PromoCalendarInput_onFocus = this.handle_PromoCalendarInput_onFocus.bind(
+    //   this
+    // );
+    this.handle_PromoCalendarInput_focusToggle = this.handle_PromoCalendarInput_focusToggle.bind(
       this
     );
   }
 
-  handle_PromoCalendarInput_onFocus(productPromoTypeId) {
+  // handle_PromoCalendarInput_onFocus(productPromoTypeId) {
+  //   this.setState(currentState => {
+  //     return { focusedProductPromoType: productPromoTypeId };
+  //   });
+  // }
+  handle_PromoCalendarInput_focusToggle(productPromoTypeId) {
     this.setState(currentState => {
       return { focusedProductPromoType: productPromoTypeId };
     });
@@ -26,8 +34,8 @@ class PromoPlanner extends React.Component {
         <PromoCalendar
           productMaster={mockProductMaster}
           promoTypes={mockPromoTypes}
-          handle_PromoCalendarInput_onFocus={
-            this.handle_PromoCalendarInput_onFocus
+          handle_PromoCalendarInput_focusToggle={
+            this.handle_PromoCalendarInput_focusToggle
           }
         />
         <ForecastAssumptions
