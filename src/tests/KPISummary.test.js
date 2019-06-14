@@ -120,6 +120,82 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
       );
       expect(getByLabelText("GIV Forecast:").textContent).toBe("94800");
     });
+    it("A01 + A02 GIV Forecast = 156000 when there is no promotion.", () => {
+      mockProductPromoTypeFrequency = [
+        { ID: "A01-NPW", Frequency: 52 },
+        { ID: "A01-10% Off", Frequency: 0 },
+        { ID: "A01-30% Off", Frequency: 0 },
+        { ID: "A01-50% Off", Frequency: 0 },
+        { ID: "A02-NPW", Frequency: 52 },
+        { ID: "A02-10% Off", Frequency: 0 },
+        { ID: "A02-30% Off", Frequency: 0 },
+        { ID: "A02-50% Off", Frequency: 0 }
+      ];
+      const { getByLabelText } = render(
+        <KPISummary
+          productPromoTypeFrequency={mockProductPromoTypeFrequency}
+          forecastAssumptions={mockForecastAssumptions}
+        />
+      );
+      expect(getByLabelText("GIV Forecast:").textContent).toBe("156000");
+    });
+    it("A01 + A02 GIV Forecast = 156600 with 1 week 10% Off each.", () => {
+      mockProductPromoTypeFrequency = [
+        { ID: "A01-NPW", Frequency: 51 },
+        { ID: "A01-10% Off", Frequency: 1 },
+        { ID: "A01-30% Off", Frequency: 0 },
+        { ID: "A01-50% Off", Frequency: 0 },
+        { ID: "A02-NPW", Frequency: 51 },
+        { ID: "A02-10% Off", Frequency: 1 },
+        { ID: "A02-30% Off", Frequency: 0 },
+        { ID: "A02-50% Off", Frequency: 0 }
+      ];
+      const { getByLabelText } = render(
+        <KPISummary
+          productPromoTypeFrequency={mockProductPromoTypeFrequency}
+          forecastAssumptions={mockForecastAssumptions}
+        />
+      );
+      expect(getByLabelText("GIV Forecast:").textContent).toBe("156600");
+    });
+    it("A01 + A02 GIV Forecast = 157200 with 2 week 10% Off.", () => {
+      mockProductPromoTypeFrequency = [
+        { ID: "A01-NPW", Frequency: 50 },
+        { ID: "A01-10% Off", Frequency: 2 },
+        { ID: "A01-30% Off", Frequency: 0 },
+        { ID: "A01-50% Off", Frequency: 0 },
+        { ID: "A02-NPW", Frequency: 50 },
+        { ID: "A02-10% Off", Frequency: 2 },
+        { ID: "A02-30% Off", Frequency: 0 },
+        { ID: "A02-50% Off", Frequency: 0 }
+      ];
+      const { getByLabelText } = render(
+        <KPISummary
+          productPromoTypeFrequency={mockProductPromoTypeFrequency}
+          forecastAssumptions={mockForecastAssumptions}
+        />
+      );
+      expect(getByLabelText("GIV Forecast:").textContent).toBe("157200");
+    });
+    it("A01 + A02 GIV Forecast = 189600 with 1 week 10% Off, 1 week 30% Off, and 1 week 50% Off.", () => {
+      mockProductPromoTypeFrequency = [
+        { ID: "A01-NPW", Frequency: 49 },
+        { ID: "A01-10% Off", Frequency: 1 },
+        { ID: "A01-30% Off", Frequency: 1 },
+        { ID: "A01-50% Off", Frequency: 1 },
+        { ID: "A02-NPW", Frequency: 49 },
+        { ID: "A02-10% Off", Frequency: 1 },
+        { ID: "A02-30% Off", Frequency: 1 },
+        { ID: "A02-50% Off", Frequency: 1 }
+      ];
+      const { getByLabelText } = render(
+        <KPISummary
+          productPromoTypeFrequency={mockProductPromoTypeFrequency}
+          forecastAssumptions={mockForecastAssumptions}
+        />
+      );
+      expect(getByLabelText("GIV Forecast:").textContent).toBe("189600");
+    });
   });
 });
 
@@ -198,6 +274,96 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: -11250,
       ROI: 0.9
+    }
+  },
+  {
+    ID: "A01-NPW",
+    Product: "Drop Your Hair Shampoo",
+    PromoType: "Non-Promo Week",
+    KPIs: {
+      ScanUnit: 100,
+      BaselineUnit: 100,
+      IncrementalUnit: 0,
+      IncrementalGIV: 0,
+      BaseListPrice: 15,
+      TotalCost: 0,
+      ScanDealUnitCost: 0,
+      TotalBudget: 375,
+      FundRate: 0.25,
+      NetSufficiency: 375,
+      ROI: 0
+    }
+  },
+  {
+    ID: "A02-10% Off",
+    Product: "Scratch Your Sculp Shampoo",
+    PromoType: "10% Off",
+    KPIs: {
+      ScanUnit: 120,
+      BaselineUnit: 100,
+      IncrementalUnit: 20,
+      IncrementalGIV: 300,
+      BaseListPrice: 15,
+      TotalCost: 360,
+      ScanDealUnitCost: 3,
+      TotalBudget: 450,
+      FundRate: 0.25,
+      NetSufficiency: 90,
+      ROI: 1.83
+    }
+  },
+  {
+    ID: "A02-30% Off",
+    Product: "Scratch Your Sculp Shampoo",
+    PromoType: "30% Off",
+    KPIs: {
+      ScanUnit: 300,
+      BaselineUnit: 100,
+      IncrementalUnit: 200,
+      IncrementalGIV: 3000,
+      BaseListPrice: 15,
+      TotalCost: 2700,
+      ScanDealUnitCost: 9,
+      TotalBudget: 1125,
+      FundRate: 0.25,
+      NetSufficiency: -1575,
+      ROI: 1.11
+    }
+  },
+  {
+    ID: "A02-50% Off",
+    Product: "Scratch Your Sculp Shampoo",
+    PromoType: "50% Off",
+    KPIs: {
+      ScanUnit: 1000,
+      BaselineUnit: 100,
+      IncrementalUnit: 900,
+      IncrementalGIV: 13500,
+      BaseListPrice: 15,
+      TotalCost: 15000,
+      ScanDealUnitCost: 15,
+      TotalBudget: 3750,
+      FundRate: 0.25,
+      NetSufficiency: -11250,
+      ROI: 0.9
+    }
+  },
+  {
+    ID: "A02-NPW",
+    Product: "Scratch Your Sculp Shampoo",
+    PromoType: "Non-Promo Week",
+    KPIs: {
+      ScanUnit: 100,
+      BaselineUnit: 100,
+      IncrementalUnit: 0,
+      IncrementalGIV: 0,
+      BaseListPrice: 15,
+      TotalCost: 0,
+      ScanDealUnitCost: 0,
+      TotalBudget: 375,
+      FundRate: 0.25,
+      NetSufficiency: 375,
+      ROI: 0
     }
   }
 ];
