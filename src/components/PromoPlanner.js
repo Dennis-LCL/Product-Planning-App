@@ -5,7 +5,18 @@ import ForecastAssumptions from "../components/ForecastAssumptions";
 class PromoPlanner extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      focusedProductPromoType: ""
+    };
+    this.handle_PromoCalendarInput_onFocus = this.handle_PromoCalendarInput_onFocus.bind(
+      this
+    );
+  }
+
+  handle_PromoCalendarInput_onFocus(productPromoTypeId) {
+    this.setState(currentState => {
+      return { focusedProductPromoType: productPromoTypeId };
+    });
   }
 
   render() {
@@ -15,8 +26,14 @@ class PromoPlanner extends React.Component {
         <PromoCalendar
           productMaster={mockProductMaster}
           promoTypes={mockPromoTypes}
+          handle_PromoCalendarInput_onFocus={
+            this.handle_PromoCalendarInput_onFocus
+          }
         />
-        <ForecastAssumptions productPromoTypeId="" algorithm={mockAlgorithm} />
+        <ForecastAssumptions
+          productPromoTypeId={this.state.focusedProductPromoType}
+          algorithm={mockAlgorithm}
+        />
       </React.Fragment>
     );
   }

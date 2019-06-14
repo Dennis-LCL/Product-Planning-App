@@ -7,41 +7,41 @@ import ForecastAssumptions from "../components/ForecastAssumptions";
 import PromoPlanner from "../components/PromoPlanner";
 
 describe("PromoPlanner component should be rendered with required DOM nodes.", () => {
-  it.only("should render and empty PromoPlanner component.", () => {
+  it("should render and empty PromoPlanner component.", () => {
     const { getByText } = render(<PromoPlanner />);
     expect(!!getByText).toBeTruthy();
   });
-  it.only("should render a component title (h1 tag) says 'Promo Planner'", () => {
+  it("should render a component title (h1 tag) says 'Promo Planner'", () => {
     const { getByText } = render(<PromoPlanner />);
     expect(getByText("Promo Planner")).toBeInTheDocument();
   });
 });
-describe("When ONE Product-PromoType cell is clicked in PromoCalendar (i.e. focused) and KPIs are found.", () => {
-  it.only("should render input field under each Product-PromoType combination for users to click.", () => {
-    const { getByText, fireEvent } = render(<PromoPlanner />);
+describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAssumptions should show the KPIs for the clicked Product-PromoType combination.", () => {
+  it("PromoCalendar should render input fields, each with unique identifier for Product-PromoType combination.", () => {
+    const { getByText } = render(<PromoPlanner />);
     const inputField = document.getElementById("A05-50% Off");
     expect(!!inputField).toBeTruthy();
   });
 
-  it("should trigger ForecastAssumptions to show KPIs correctly when a 'A01 10% Off' is clicked (i.e. focused).", () => {
-    return false;
-    // const { getByText } = render(
-    //     <ForecastAssumptions
-    //         productPromoTypeId="A01-10%"
-    //         algorithm={mockAlgorithm}
-    //     />
-    // );
-    // expect(getByText("120")).toBeInTheDocument();
-    // expect(getByText("100")).toBeInTheDocument();
-    // expect(getByText("20")).toBeInTheDocument();
-    // expect(getByText("300")).toBeInTheDocument();
-    // expect(getByText("15")).toBeInTheDocument();
-    // expect(getByText("360")).toBeInTheDocument();
-    // expect(getByText("3")).toBeInTheDocument();
-    // expect(getByText("450")).toBeInTheDocument();
-    // expect(getByText("0.25")).toBeInTheDocument();
-    // expect(getByText("90")).toBeInTheDocument();
-    // expect(getByText("1.83")).toBeInTheDocument();
+  it.only("should trigger ForecastAssumptions to show KPIs correctly when the 10% off input field is focused.", () => {
+    const { getByText } = render(<PromoPlanner />);
+
+    const inputField = document.getElementById("A01-10% Off");
+    console.log(inputField);
+
+    fireEvent.focus(inputField, { bubbles: false, cancelable: false });
+
+    expect(getByText("120")).toBeInTheDocument();
+    expect(getByText("100")).toBeInTheDocument();
+    expect(getByText("20")).toBeInTheDocument();
+    expect(getByText("300")).toBeInTheDocument();
+    expect(getByText("15")).toBeInTheDocument();
+    expect(getByText("360")).toBeInTheDocument();
+    expect(getByText("3")).toBeInTheDocument();
+    expect(getByText("450")).toBeInTheDocument();
+    expect(getByText("0.25")).toBeInTheDocument();
+    expect(getByText("90")).toBeInTheDocument();
+    expect(getByText("1.83")).toBeInTheDocument();
   });
   it("should trigger ForecastAssumptions to show KPIs correctly when a 'A01 30% Off' is clicked (i.e. focused).", () => {
     return false;
@@ -63,10 +63,10 @@ describe("When ONE Product-PromoType cell is clicked in PromoCalendar (i.e. focu
     // expect(getByText("-1575")).toBeInTheDocument();
     // expect(getByText("1.11")).toBeInTheDocument();
   });
-  it.skip("should trigger ForecastAssumptions to show KPIs correctly when user click from one Product-PromoType cell to another.", () => {
+  it("should trigger ForecastAssumptions to show KPIs correctly when user click from one Product-PromoType cell to another.", () => {
     return false;
   });
-  it.skip("should trigger ForecastAssumptions to revert back to blank KPIs when user clicks something outside of the table.", () => {
+  it("should trigger ForecastAssumptions to revert back to blank KPIs when user clicks something outside of the table.", () => {
     return false;
   });
 });

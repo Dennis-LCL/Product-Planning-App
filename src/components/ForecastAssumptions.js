@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "@testing-library/react";
 
 class ForecastAssumptions extends React.Component {
   constructor(props) {
@@ -23,8 +22,8 @@ class ForecastAssumptions extends React.Component {
     } else {
       selectedKPIs = defaultKPIs;
     }
-    console.log(this.state.productPromoTypeId);
-    console.log(isIdReceived);
+    // console.log(this.state.productPromoTypeId);
+    // console.log(isIdReceived);
     return (
       <React.Fragment>
         <h2>Forecast Assumptions</h2>

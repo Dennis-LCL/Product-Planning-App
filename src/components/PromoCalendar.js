@@ -57,7 +57,12 @@ class PromoCalendar extends React.Component {
 
           return (
             <td>
-              <PromoCalendarInputCell id={promoCalendarInputCellId} />
+              <PromoCalendarInputCell
+                id={promoCalendarInputCellId}
+                handle_PromoCalendarInput_onFocus={
+                  this.props.handle_PromoCalendarInput_onFocus
+                }
+              />
             </td>
           );
         });
@@ -92,7 +97,14 @@ class PromoCalendar extends React.Component {
 }
 
 function PromoCalendarInputCell(props) {
-  return <input id={props.id} className="promoFrequency" placeholder="--" />;
+  return (
+    <input
+      id={props.id}
+      className="promoFrequency"
+      placeholder="--"
+      onFocus={() => props.handle_PromoCalendarInput_onFocus(props.id)}
+    />
+  );
 }
 
 export default PromoCalendar;
