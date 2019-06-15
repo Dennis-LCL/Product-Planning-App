@@ -10,7 +10,7 @@ class PromoCalendar extends React.Component {
   }
 
   render() {
-    console.log(this.props.productPromoTypeFrequency);
+    // console.log(this.props.productPromoTypeFrequency);
     // Construct the columns to show product attributes from product master
     const productExist = this.state.productMaster.length !== 0 && true;
     const productAttributes =

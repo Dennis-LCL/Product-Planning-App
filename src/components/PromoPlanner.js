@@ -58,42 +58,39 @@ class PromoPlanner extends React.Component {
   }
 
   handle_PromoCalendarInput_onChange(productPromoTypeId, event) {
-    const isEnterPressed = true;
-    if (isEnterPressed) {
-      const currentPoductPromoTypeId = productPromoTypeId;
-      // ? productPromoTypeId
-      // : this.state.focusedProductPromoType;
+    const currentPoductPromoTypeId = productPromoTypeId;
+    // ? productPromoTypeId
+    // : this.state.focusedProductPromoType;
 
-      const currentFrequency = this.state.productPromoTypeFrequency.find(
-        productPromoType => productPromoType.ID === currentPoductPromoTypeId
-      ).Frequency;
-      const newFrequency = event.target.value;
-      const frequencyDifference = newFrequency - currentFrequency;
+    const currentFrequency = this.state.productPromoTypeFrequency.find(
+      productPromoType => productPromoType.ID === currentPoductPromoTypeId
+    ).Frequency;
+    const newFrequency = event.target.value;
+    const frequencyDifference = newFrequency - currentFrequency;
 
-      console.log("New Frequency: ", newFrequency);
-      console.log("Current Frequency: ", currentFrequency);
-      console.log("Frequency Difference: ", frequencyDifference);
+    // console.log("New Frequency: ", newFrequency);
+    // console.log("Current Frequency: ", currentFrequency);
+    // console.log("Frequency Difference: ", frequencyDifference);
 
-      if (frequencyDifference !== 0) {
-        this.setState(currentState => {
-          // Find the right Product-PromoType cell and update the frequency to newFrequency
-          currentState.productPromoTypeFrequency.find(
-            productPromoType => productPromoType.ID === productPromoTypeId
-          ).Frequency = newFrequency;
-          // Then, find the Non-Promo-Week of the product, and update the frequency, i.e. its currentFrequency - newFrequency.
-          // Construct the productPromoTypeId for the non-promo-week
-          const idArray = productPromoTypeId.split("-");
-          const nonPromoWeekId = idArray[0] + "-NPW";
-          // console.log(nonPromoWeekId);
-          currentState.productPromoTypeFrequency.find(
-            productPromoType => productPromoType.ID === nonPromoWeekId
-          ).Frequency -= frequencyDifference;
+    if (frequencyDifference !== 0) {
+      this.setState(currentState => {
+        // Find the right Product-PromoType cell and update the frequency to newFrequency
+        currentState.productPromoTypeFrequency.find(
+          productPromoType => productPromoType.ID === productPromoTypeId
+        ).Frequency = newFrequency;
+        // Then, find the Non-Promo-Week of the product, and update the frequency, i.e. its currentFrequency - newFrequency.
+        // Construct the productPromoTypeId for the non-promo-week
+        const idArray = productPromoTypeId.split("-");
+        const nonPromoWeekId = idArray[0] + "-NPW";
+        // console.log(nonPromoWeekId);
+        currentState.productPromoTypeFrequency.find(
+          productPromoType => productPromoType.ID === nonPromoWeekId
+        ).Frequency -= frequencyDifference;
 
-          return {
-            productPromoTypeFrequency: currentState.productPromoTypeFrequency
-          };
-        });
-      }
+        return {
+          productPromoTypeFrequency: currentState.productPromoTypeFrequency
+        };
+      });
     }
   }
 
