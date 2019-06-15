@@ -1,26 +1,66 @@
 import React from "react";
 import PromoCalendar from "../components/PromoCalendar";
 import ForecastAssumptions from "../components/ForecastAssumptions";
+import KPISummary from "../components/KPISummary";
 
 class PromoPlanner extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      productMaster: props.productMaster,
+      promoTypes: props.promoTypes,
+      algorithm: props.algorithm,
+      productPromoTypeFrequency: [
+        { ID: "A01-NPW", Frequency: 51 },
+        { ID: "A01-10% Off", Frequency: 0 },
+        { ID: "A01-30% Off", Frequency: 0 },
+        { ID: "A01-50% Off", Frequency: 1 },
+        { ID: "A02-NPW", Frequency: 52 },
+        { ID: "A02-10% Off", Frequency: 0 },
+        { ID: "A02-30% Off", Frequency: 0 },
+        { ID: "A02-50% Off", Frequency: 0 }
+      ],
       focusedProductPromoType: ""
     };
-    // this.handle_PromoCalendarInput_onFocus = this.handle_PromoCalendarInput_onFocus.bind(
-    //   this
-    // );
     this.handle_PromoCalendarInput_focusToggle = this.handle_PromoCalendarInput_focusToggle.bind(
       this
     );
   }
 
-  // handle_PromoCalendarInput_onFocus(productPromoTypeId) {
-  //   this.setState(currentState => {
-  //     return { focusedProductPromoType: productPromoTypeId };
-  //   });
-  // }
+  componentDidMount() {
+    console.log("componentDidMount is called!!");
+    this.setState(currentState => {
+      console.log("setState is called.");
+      // return { focusedProductPromoType: "A1-10% Off" };
+      // });
+      const defaultProductPromoTypeFrequency = [];
+      // Extract all product codes from productMaster
+      const productCodes = [];
+      currentState.productMaster.map(product => {
+        return productCodes.push(product.Code);
+      });
+      // Construct productPromoTypeFrequency IDs
+      for (let i = 0; i < productCodes.length; i++) {
+        for (let j = 0; j < currentState.promoTypes.length; j++) {
+          let tempObj = {
+            ID: productCodes[i] + "-" + currentState.promoTypes[j],
+            Frequency: 0
+          };
+          defaultProductPromoTypeFrequency.push(tempObj);
+        }
+        let nonPromoWeekFrequency = {
+          ID: productCodes[i] + "-NPW",
+          Frequency: 52
+        };
+        defaultProductPromoTypeFrequency.push(nonPromoWeekFrequency);
+      }
+      console.log(defaultProductPromoTypeFrequency);
+      return {
+        productPromoTypeFrequency: defaultProductPromoTypeFrequency
+      };
+    });
+  }
+
   handle_PromoCalendarInput_focusToggle(productPromoTypeId) {
     this.setState(currentState => {
       return { focusedProductPromoType: productPromoTypeId };
@@ -30,17 +70,22 @@ class PromoPlanner extends React.Component {
   render() {
     return (
       <React.Fragment>
+        {console.log(this.state.productPromoTypeFrequency)}
         <h1>Promo Planner</h1>
         <PromoCalendar
-          productMaster={mockProductMaster}
-          promoTypes={mockPromoTypes}
+          productMaster={this.state.productMaster}
+          promoTypes={this.state.promoTypes}
           handle_PromoCalendarInput_focusToggle={
             this.handle_PromoCalendarInput_focusToggle
           }
         />
         <ForecastAssumptions
           productPromoTypeId={this.state.focusedProductPromoType}
-          algorithm={mockAlgorithm}
+          algorithm={this.state.algorithm}
+        />
+        <KPISummary
+          productPromoTypeFrequency={this.state.productPromoTypeFrequency}
+          forecastAssumptions={this.state.algorithm}
         />
       </React.Fragment>
     );
@@ -48,113 +93,3 @@ class PromoPlanner extends React.Component {
 }
 
 export default PromoPlanner;
-
-const mockProductMaster = [
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A01",
-    Description: "Drop Your Hair Shampoo"
-  },
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A02",
-    Description: "Scratch Your Sculp Shampoo"
-  },
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A03",
-    Description: "Burn The Root Shampoo"
-  },
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A04",
-    Description: "Let It Snow Shampoo"
-  },
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A05",
-    Description: "Volumn Reduction Shampoo"
-  }
-];
-
-const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
-
-const mockAlgorithm = [
-  {
-    ID: "A01-10% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "10% Off",
-    KPIs: {
-      ScanUnit: 120,
-      BaselineUnit: 100,
-      IncrementalUnit: 20,
-      IncrementalGIV: 300,
-      BaseListPrice: 15,
-      TotalCost: 360,
-      ScanDealUnitCost: 3,
-      TotalBudget: 450,
-      FundRate: 0.25,
-      NetSufficiency: 90,
-      ROI: 1.83
-    }
-  },
-  {
-    ID: "A01-30% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "30% Off",
-    KPIs: {
-      ScanUnit: 300,
-      BaselineUnit: 100,
-      IncrementalUnit: 200,
-      IncrementalGIV: 3000,
-      BaseListPrice: 15,
-      TotalCost: 2700,
-      ScanDealUnitCost: 9,
-      TotalBudget: 1125,
-      FundRate: 0.25,
-      NetSufficiency: -1575,
-      ROI: 1.11
-    }
-  },
-  {
-    ID: "A01-50% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "50% Off",
-    KPIs: {
-      ScanUnit: 1000,
-      BaselineUnit: 100,
-      IncrementalUnit: 900,
-      IncrementalGIV: 13500,
-      BaseListPrice: 15,
-      TotalCost: 15000,
-      ScanDealUnitCost: 15,
-      TotalBudget: 3750,
-      FundRate: 0.25,
-      NetSufficiency: -11250,
-      ROI: 0.9
-    }
-  },
-  {
-    ID: "A01-NPW",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "Non-Promo Week",
-    KPIs: {
-      ScanUnit: 100,
-      BaselineUnit: 100,
-      IncrementalUnit: 0,
-      IncrementalGIV: 0,
-      BaseListPrice: 15,
-      TotalCost: 0,
-      ScanDealUnitCost: 0,
-      TotalBudget: 375,
-      FundRate: 0.25,
-      NetSufficiency: 375,
-      ROI: 0
-    }
-  }
-];

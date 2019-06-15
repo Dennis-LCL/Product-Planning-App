@@ -31,7 +31,8 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
 
   return (
     <React.Fragment>
-      <h2>KPI Summary</h2>;<label htmlFor="GIVForecast">GIV Forecast:</label>
+      <h2>KPI Summary</h2>
+      <label htmlFor="GIVForecast">GIV Forecast:</label>
       <output id="GIVForecast">{annualKPIs.GIVForecast}</output>
     </React.Fragment>
   );
