@@ -206,7 +206,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-NPW",
+    ID: "A02-NPW",
     Product: "Drop Your Hair Shampoo",
     PromoType: "Non-Promo Week",
     KPIs: {
@@ -275,24 +275,6 @@ const mockAlgorithm = [
       FundRate: 0.25,
       NetSufficiency: -11250,
       ROI: 0.9
-    }
-  },
-  {
-    ID: "A02-NPW",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "Non-Promo Week",
-    KPIs: {
-      ScanUnit: 100,
-      BaselineUnit: 100,
-      IncrementalUnit: 0,
-      IncrementalGIV: 0,
-      BaseListPrice: 15,
-      TotalCost: 0,
-      ScanDealUnitCost: 0,
-      TotalBudget: 375,
-      FundRate: 0.25,
-      NetSufficiency: 375,
-      ROI: 0
     }
   }
 ];

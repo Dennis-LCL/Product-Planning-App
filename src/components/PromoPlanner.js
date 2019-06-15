@@ -99,6 +99,7 @@ class PromoPlanner extends React.Component {
         <PromoCalendar
           productMaster={this.state.productMaster}
           promoTypes={this.state.promoTypes}
+          productPromoTypeFrequency={this.state.productPromoTypeFrequency}
           handle_PromoCalendarInput_focusToggle={
             this.handle_PromoCalendarInput_focusToggle
           }

@@ -46,6 +46,7 @@ class PromoCalendar extends React.Component {
 
     if (productExist) {
       for (let i = 0; i < this.state.productMaster.length; i++) {
+        // Add productAttributes into productRows
         productAttributeValues = Object.values(this.state.productMaster[i]).map(
           attribute => <td>{attribute}</td>
         );
@@ -69,11 +70,25 @@ class PromoCalendar extends React.Component {
             </td>
           );
         });
+        // Add Non-Promo-Week frequency to the productRows
+        // Write something here!!!
+
+        const isProductPromoTypeFrequencyReceived =
+          this.props.productPromoTypeFrequency.length !== 0 && true;
+        const nonPromoWeekId = this.state.productMaster[i].Code + "-NPW";
+        console.log(nonPromoWeekId);
+
+        let numberOfNonPromoWeeks = isProductPromoTypeFrequencyReceived
+          ? this.props.productPromoTypeFrequency.find(
+              productPromoType => productPromoType.ID === nonPromoWeekId
+            ).Frequency
+          : 52;
+
         productRows.push(
           <tr>
             {productAttributeValues}
             {promoFrequencyCells}
-            <td>52</td>
+            <td>{numberOfNonPromoWeeks}</td>
           </tr>
         );
       }
