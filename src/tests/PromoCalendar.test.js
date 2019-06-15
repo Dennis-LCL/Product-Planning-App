@@ -58,6 +58,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
         <PromoCalendar
           productMaster={mockProductMaster}
           promoTypes={mockPromoTypes}
+          productPromoTypeFrequency={[]}
         />
       );
       const productAttributes = Object.keys(mockProductMaster[0]);
@@ -71,6 +72,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
         <PromoCalendar
           productMaster={mockProductMaster}
           promoTypes={mockPromoTypes}
+          productPromoTypeFrequency={[]}
         />
       );
       console.log(mockPromoTypes);
@@ -86,6 +88,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
         <PromoCalendar
           productMaster={mockProductMaster}
           promoTypes={mockPromoTypes}
+          productPromoTypeFrequency={[]}
         />
       );
       const numberOfRenderedProducts = getAllByText(/Boldie/i).length;
@@ -100,6 +103,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
         <PromoCalendar
           productMaster={mockProductMaster}
           promoTypes={mockPromoTypes}
+          productPromoTypeFrequency={[]}
         />
       );
 
@@ -116,6 +120,7 @@ describe("Promo Calendar's initial condition when user launches it the first tim
         <PromoCalendar
           productMaster={mockProductMaster}
           promoTypes={mockPromoTypes}
+          productPromoTypeFrequency={[]}
         />
       );
       expect(getAllByText("52").length).toBe(mockProductMaster.length);
