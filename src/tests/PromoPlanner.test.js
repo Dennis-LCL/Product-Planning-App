@@ -91,6 +91,7 @@ describe.only("When user input integer into the Product-PromoType cell in PromoC
     // Write the input value code!!!
     const inputField1 = document.getElementById("A01-10% Off");
     const inputField2 = document.getElementById("A02-10% Off");
+    console.log(inputField1);
     fireEvent.change(inputField1, { target: { value: "1" } });
     fireEvent.change(inputField2, { target: { value: "1" } });
     expect(getByLabelText("GIV Forecast:").textContent).toBe("156600");

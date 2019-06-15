@@ -10,6 +10,7 @@ class PromoCalendar extends React.Component {
   }
 
   render() {
+    console.log(this.props.productPromoTypeFrequency);
     // Construct the columns to show product attributes from product master
     const productExist = this.state.productMaster.length !== 0 && true;
     const productAttributes =
@@ -76,7 +77,7 @@ class PromoCalendar extends React.Component {
         const isProductPromoTypeFrequencyReceived =
           this.props.productPromoTypeFrequency.length !== 0 && true;
         const nonPromoWeekId = this.state.productMaster[i].Code + "-NPW";
-        console.log(nonPromoWeekId);
+        // console.log(nonPromoWeekId);
 
         let numberOfNonPromoWeeks = isProductPromoTypeFrequencyReceived
           ? this.props.productPromoTypeFrequency.find(
