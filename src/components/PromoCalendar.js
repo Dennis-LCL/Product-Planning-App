@@ -62,6 +62,9 @@ class PromoCalendar extends React.Component {
                 handle_PromoCalendarInput_focusToggle={
                   this.props.handle_PromoCalendarInput_focusToggle
                 }
+                handle_PromoCalendarInput_onChange={
+                  this.props.handle_PromoCalendarInput_onChange
+                }
               />
             </td>
           );
@@ -104,6 +107,9 @@ function PromoCalendarInputCell(props) {
       placeholder="--"
       onFocus={() => props.handle_PromoCalendarInput_focusToggle(props.id)}
       onBlur={() => props.handle_PromoCalendarInput_focusToggle("")}
+      onChange={event =>
+        props.handle_PromoCalendarInput_onChange(props.id, event)
+      }
     />
   );
 }

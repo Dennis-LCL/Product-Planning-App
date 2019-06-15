@@ -10,29 +10,19 @@ class PromoPlanner extends React.Component {
       productMaster: props.productMaster,
       promoTypes: props.promoTypes,
       algorithm: props.algorithm,
-      productPromoTypeFrequency: [
-        { ID: "A01-NPW", Frequency: 51 },
-        { ID: "A01-10% Off", Frequency: 0 },
-        { ID: "A01-30% Off", Frequency: 0 },
-        { ID: "A01-50% Off", Frequency: 1 },
-        { ID: "A02-NPW", Frequency: 52 },
-        { ID: "A02-10% Off", Frequency: 0 },
-        { ID: "A02-30% Off", Frequency: 0 },
-        { ID: "A02-50% Off", Frequency: 0 }
-      ],
+      productPromoTypeFrequency: [],
       focusedProductPromoType: ""
     };
     this.handle_PromoCalendarInput_focusToggle = this.handle_PromoCalendarInput_focusToggle.bind(
       this
     );
+    this.handle_PromoCalendarInput_onChange = this.handle_PromoCalendarInput_onChange.bind(
+      this
+    );
   }
 
   componentDidMount() {
-    console.log("componentDidMount is called!!");
     this.setState(currentState => {
-      console.log("setState is called.");
-      // return { focusedProductPromoType: "A1-10% Off" };
-      // });
       const defaultProductPromoTypeFrequency = [];
       // Extract all product codes from productMaster
       const productCodes = [];
@@ -54,7 +44,7 @@ class PromoPlanner extends React.Component {
         };
         defaultProductPromoTypeFrequency.push(nonPromoWeekFrequency);
       }
-      console.log(defaultProductPromoTypeFrequency);
+      // console.log(defaultProductPromoTypeFrequency);
       return {
         productPromoTypeFrequency: defaultProductPromoTypeFrequency
       };
@@ -67,16 +57,53 @@ class PromoPlanner extends React.Component {
     });
   }
 
+  handle_PromoCalendarInput_onChange(productPromoTypeId, event) {
+    const currentPoductPromoTypeId = productPromoTypeId
+      ? productPromoTypeId
+      : this.state.focusedProductPromoType;
+
+    const currentFrequency = this.state.productPromoTypeFrequency.find(
+      productPromoType => productPromoType.ID === currentPoductPromoTypeId
+    ).Frequency;
+    const newFrequency = event.target.value;
+    const frequencyDifference = newFrequency - currentFrequency;
+
+    console.log(newFrequency);
+    console.log(currentFrequency);
+    console.log(frequencyDifference);
+
+    if (frequencyDifference !== 0) {
+      this.setState(currentState => {
+        // Find the right Product-PromoType cell and update the frequency to newFrequency
+        currentState.productPromoTypeFrequency.find(
+          productPromoType => productPromoType.ID === productPromoTypeId
+        ).Frequency = newFrequency;
+        // Then, find the Non-Promo-Week of the product, and update the frequency, i.e. its currentFrequency - newFrequency.
+        // Construct the productPromoTypeId for the non-promo-week
+        const idArray = productPromoTypeId.split("-");
+        const nonPromoWeekId = idArray[0] + "-NPW";
+        console.log(nonPromoWeekId);
+        currentState.productPromoTypeFrequency.find(
+          productPromoType => productPromoType.ID === nonPromoWeekId
+        ).Frequency -= newFrequency;
+
+        return {};
+      });
+    }
+  }
+
   render() {
     return (
       <React.Fragment>
-        {console.log(this.state.productPromoTypeFrequency)}
         <h1>Promo Planner</h1>
         <PromoCalendar
           productMaster={this.state.productMaster}
           promoTypes={this.state.promoTypes}
           handle_PromoCalendarInput_focusToggle={
             this.handle_PromoCalendarInput_focusToggle
+          }
+          handle_PromoCalendarInput_onChange={
+            this.handle_PromoCalendarInput_onChange
           }
         />
         <ForecastAssumptions

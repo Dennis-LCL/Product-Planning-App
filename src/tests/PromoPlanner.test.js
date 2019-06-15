@@ -80,6 +80,21 @@ describe.only("When user input integer into the Product-PromoType cell in PromoC
     );
     expect(getByLabelText("GIV Forecast:").textContent).toBe("156000");
   });
+  it("A01 + A02 GIV Forecast = 156600 with 1 week 10% Off each.", () => {
+    const { getByLabelText } = render(
+      <PromoPlanner
+        productMaster={mockProductMaster}
+        promoTypes={mockPromoTypes}
+        algorithm={mockAlgorithm}
+      />
+    );
+    // Write the input value code!!!
+    const inputField1 = document.getElementById("A01-10% Off");
+    const inputField2 = document.getElementById("A02-10% Off");
+    fireEvent.change(inputField1, { target: { value: "1" } });
+    fireEvent.change(inputField2, { target: { value: "1" } });
+    expect(getByLabelText("GIV Forecast:").textContent).toBe("156600");
+  });
 });
 
 const mockProductMaster = [
