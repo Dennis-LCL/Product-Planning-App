@@ -36,6 +36,9 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
     // GIV GAP
     GIVGap = annualKPIs.GIVForecast - GIVTarget;
 
+    // GIV Forecast IYA
+    GIVForecastIYA = Math.round((annualKPIs.GIVForecast / GIVLastYear) * 100);
+
     // NET SUFFICIENCY
     annualKPIs.NetSufficiency = productPromoTypeFrequency
       .map(productPromoTypeFrequency => {
@@ -86,6 +89,9 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
       <br />
       <label htmlFor="GIVGap">GIV Gap:</label>
       <output id="GIVGap">{GIVGap}</output>
+      <br />
+      <label htmlFor="GIVForecastIYA">GIV Forecast IYA:</label>
+      <output id="GIVForecastIYA">{GIVForecastIYA}</output>
       <br />
       <label htmlFor="NetSufficiency">Net Sufficiency:</label>
       <output id="NetSufficiency">{annualKPIs.NetSufficiency}</output>
