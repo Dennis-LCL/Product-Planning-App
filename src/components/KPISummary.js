@@ -1,6 +1,11 @@
 import React from "react";
 
 const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
+  const GIVTarget = 250000;
+  const GIVLastYear = 230000;
+  let GIVGap;
+  let GIVForecastIYA;
+
   let annualKPIs = { GIVForecast: 0 };
   let selectedKPIs;
   const isFrequencyReceived = productPromoTypeFrequency.length !== 0 && true;
@@ -27,6 +32,9 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
       })
       .reduce((total, currentValue) => (total += currentValue));
     // console.log(annualKPIs.GIVForecast);
+
+    // GIV GAP
+    GIVGap = annualKPIs.GIVForecast - GIVTarget;
 
     // NET SUFFICIENCY
     annualKPIs.NetSufficiency = productPromoTypeFrequency
@@ -70,8 +78,14 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
   return (
     <React.Fragment>
       <h2>KPI Summary</h2>
+      <label htmlFor="GIVTarget">GIV Target:</label>
+      <output id="GIVTarget">{GIVTarget}</output>
+      <br />
       <label htmlFor="GIVForecast">GIV Forecast:</label>
       <output id="GIVForecast">{annualKPIs.GIVForecast}</output>
+      <br />
+      <label htmlFor="GIVGap">GIV Gap:</label>
+      <output id="GIVGap">{GIVGap}</output>
       <br />
       <label htmlFor="NetSufficiency">Net Sufficiency:</label>
       <output id="NetSufficiency">{annualKPIs.NetSufficiency}</output>
