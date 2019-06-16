@@ -152,6 +152,40 @@ describe.only("When user input integer into the Product-PromoType cell in PromoC
       expect(getByLabelText("Net Sufficiency:").textContent).toBe("11280");
     });
   });
+  describe("Total Budget", () => {
+    it("A01 + A02 Total Budget = 39000 when there is no promotion.", () => {
+      const { getByLabelText } = render(
+        <PromoPlanner
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+          algorithm={mockAlgorithm}
+        />
+      );
+      expect(getByLabelText("Total Budget:").textContent).toBe("39000");
+    });
+    it("A01 + A02 Total Budget = 47400 with 1 week 10% Off, 1 week 30% Off, and 1 week 50% Off.", () => {
+      const { getByLabelText } = render(
+        <PromoPlanner
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+          algorithm={mockAlgorithm}
+        />
+      );
+      const inputField1 = document.getElementById("A01-10% Off");
+      const inputField2 = document.getElementById("A01-30% Off");
+      const inputField3 = document.getElementById("A01-50% Off");
+      const inputField4 = document.getElementById("A02-10% Off");
+      const inputField5 = document.getElementById("A02-30% Off");
+      const inputField6 = document.getElementById("A02-50% Off");
+      fireEvent.change(inputField1, { target: { value: "1" } });
+      fireEvent.change(inputField2, { target: { value: "1" } });
+      fireEvent.change(inputField3, { target: { value: "1" } });
+      fireEvent.change(inputField4, { target: { value: "1" } });
+      fireEvent.change(inputField5, { target: { value: "1" } });
+      fireEvent.change(inputField6, { target: { value: "1" } });
+      expect(getByLabelText("Total Budget:").textContent).toBe("47400");
+    });
+  });
 });
 
 const mockProductMaster = [

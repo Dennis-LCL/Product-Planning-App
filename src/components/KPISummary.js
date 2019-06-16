@@ -41,6 +41,18 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
       })
       .reduce((total, currentValue) => (total += currentValue));
     // console.log(annualKPIs.NetSufficiency);
+
+    // TOTAL BUDGET
+    annualKPIs.TotalBudget = productPromoTypeFrequency
+      .map(productPromoTypeFrequency => {
+        selectedKPIs = forecastAssumptions.find(
+          productPromoType =>
+            productPromoType.ID === productPromoTypeFrequency.ID
+        ).KPIs;
+        return productPromoTypeFrequency.Frequency * selectedKPIs.TotalBudget;
+      })
+      .reduce((total, currentValue) => (total += currentValue));
+    // console.log(annualKPIs.NetSufficiency);
   }
 
   return (
@@ -51,6 +63,9 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
       <br />
       <label htmlFor="NetSufficiency">Net Sufficiency:</label>
       <output id="NetSufficiency">{annualKPIs.NetSufficiency}</output>
+      <br />
+      <label htmlFor="TotalBudget">Total Budget:</label>
+      <output id="TotalBudget">{annualKPIs.TotalBudget}</output>
       <br />
     </React.Fragment>
   );
