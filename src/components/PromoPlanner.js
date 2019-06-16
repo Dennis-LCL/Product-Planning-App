@@ -2,6 +2,7 @@ import React from "react";
 import PromoCalendar from "../components/PromoCalendar";
 import ForecastAssumptions from "../components/ForecastAssumptions";
 import KPISummary from "../components/KPISummary";
+import "../styles/PromoPlanner.css";
 
 class PromoPlanner extends React.Component {
   constructor(props) {
@@ -98,25 +99,27 @@ class PromoPlanner extends React.Component {
     return (
       <React.Fragment>
         <h1>Promo Planner</h1>
-        <PromoCalendar
-          productMaster={this.state.productMaster}
-          promoTypes={this.state.promoTypes}
-          productPromoTypeFrequency={this.state.productPromoTypeFrequency}
-          handle_PromoCalendarInput_focusToggle={
-            this.handle_PromoCalendarInput_focusToggle
-          }
-          handle_PromoCalendarInput_onChange={
-            this.handle_PromoCalendarInput_onChange
-          }
-        />
-        <ForecastAssumptions
-          productPromoTypeId={this.state.focusedProductPromoType}
-          algorithm={this.state.algorithm}
-        />
         <KPISummary
           productPromoTypeFrequency={this.state.productPromoTypeFrequency}
           forecastAssumptions={this.state.algorithm}
         />
+        <div className="Plan">
+          <PromoCalendar
+            productMaster={this.state.productMaster}
+            promoTypes={this.state.promoTypes}
+            productPromoTypeFrequency={this.state.productPromoTypeFrequency}
+            handle_PromoCalendarInput_focusToggle={
+              this.handle_PromoCalendarInput_focusToggle
+            }
+            handle_PromoCalendarInput_onChange={
+              this.handle_PromoCalendarInput_onChange
+            }
+          />
+          <ForecastAssumptions
+            productPromoTypeId={this.state.focusedProductPromoType}
+            algorithm={this.state.algorithm}
+          />
+        </div>
       </React.Fragment>
     );
   }

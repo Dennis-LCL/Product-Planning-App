@@ -81,36 +81,39 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
 
   return (
     <React.Fragment>
-      <h2>KPI Summary</h2>
-      <div className="summary">
-        <label htmlFor="GIVTarget">GIV Target:</label>
-        <output id="GIVTarget">{GIVTarget}</output>
-        <br />
-        <label htmlFor="GIVForecast">GIV Forecast:</label>
-        <output id="GIVForecast">{annualKPIs.GIVForecast}</output>
-        <br />
-        <label htmlFor="GIVGap">GIV Gap:</label>
-        <output id="GIVGap">{GIVGap}</output>
-        <br />
-        <label htmlFor="GIVForecastIYA">GIV Forecast IYA:</label>
-        <output id="GIVForecastIYA">{GIVForecastIYA}</output>
-        <br />
-        <label htmlFor="NetSufficiency">Net Sufficiency:</label>
-        <output id="NetSufficiency">{annualKPIs.NetSufficiency}</output>
-        <br />
-        <label htmlFor="TotalBudget">Total Budget:</label>
-        <output id="TotalBudget">{annualKPIs.TotalBudget}</output>
-        <br />
-        <label htmlFor="TotalCost">Total Cost:</label>
-        <output id="TotalCost">{annualKPIs.TotalCost}</output>
-        <br />
+      <div id="KPISummary">
+        <h2>KPI Summary</h2>
+        <div className="chart" id="KPIs">
+          <h3>Fiscal Year: </h3>
+          <label htmlFor="GIVTarget">GIV Target:</label>
+          <output id="GIVTarget">{GIVTarget}</output>
+          <br />
+          <label htmlFor="GIVForecast">GIV Forecast:</label>
+          <output id="GIVForecast">{annualKPIs.GIVForecast}</output>
+          <br />
+          <label htmlFor="GIVGap">GIV Gap:</label>
+          <output id="GIVGap">{GIVGap}</output>
+          <br />
+          <label htmlFor="GIVForecastIYA">GIV Forecast IYA:</label>
+          <output id="GIVForecastIYA">{GIVForecastIYA}</output>
+          <br />
+          <label htmlFor="NetSufficiency">Net Sufficiency:</label>
+          <output id="NetSufficiency">{annualKPIs.NetSufficiency}</output>
+          <br />
+          <label htmlFor="TotalBudget">Total Budget:</label>
+          <output id="TotalBudget">{annualKPIs.TotalBudget}</output>
+          <br />
+          <label htmlFor="TotalCost">Total Cost:</label>
+          <output id="TotalCost">{annualKPIs.TotalCost}</output>
+          <br />
+        </div>
+        <HBarChartFundSufficiency
+          annualKPIs={annualKPIs}
+          GIVGap={GIVGap}
+          GIVForecastIYA={GIVForecastIYA}
+          GIVLastYear={GIVLastYear}
+        />
       </div>
-      <HBarChartFundSufficiency
-        annualKPIs={annualKPIs}
-        GIVGap={GIVGap}
-        GIVForecastIYA={GIVForecastIYA}
-        GIVLastYear={GIVLastYear}
-      />
     </React.Fragment>
   );
 };

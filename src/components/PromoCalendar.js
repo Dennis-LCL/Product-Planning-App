@@ -89,7 +89,7 @@ class PromoCalendar extends React.Component {
           <tr>
             {productAttributeValues}
             {promoFrequencyCells}
-            <td>{numberOfNonPromoWeeks}</td>
+            <td id="NonPromoWeek">{numberOfNonPromoWeeks}</td>
           </tr>
         );
       }
@@ -104,12 +104,14 @@ class PromoCalendar extends React.Component {
 
     return (
       <React.Fragment>
-        <h2>Promo Calendar</h2>
-        <h3>Work Space:</h3>
-        <table>
-          {promoCalendarColumns}
-          {promoCalendarRows}
-        </table>
+        <div id="PromoCalendar">
+          <h2>Promo Calendar</h2>
+          <h3>Work Space:</h3>
+          <table>
+            {promoCalendarColumns}
+            {promoCalendarRows}
+          </table>
+        </div>
       </React.Fragment>
     );
   }

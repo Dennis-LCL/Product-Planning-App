@@ -48,15 +48,16 @@ const HBarChartFundSufficiency = props => {
   };
 
   return (
-    <div className="chart">
-      <div id="GIVSufficiency">
+    <div className="ChartArea">
+      <div className="chart" id="GIVSufficiency">
         <h3>GIV Sufficiency</h3>
         <Doughnut data={doughnutData} />
       </div>
-      <div id="GIVvsLastYear">
+      <div className="chart" id="GIVvsLastYear">
+        <h3>vs. Year Ago</h3>
         <Bar data={barData} />
       </div>
-      <div id="FundSufficiency">
+      <div className="chart" id="FundSufficiency">
         <h3>Fund Sufficiency</h3>
         <HorizontalBar data={hBarData} />
       </div>
