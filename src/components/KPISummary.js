@@ -7,6 +7,7 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
   const isAssumptionsReceived = forecastAssumptions.length !== 0 && true;
 
   if (isFrequencyReceived && isAssumptionsReceived) {
+    // GIV FORECAST
     annualKPIs.GIVForecast = productPromoTypeFrequency
       .map(productPromoTypeFrequency => {
         // console.log(productPromoTypeFrequency);
@@ -25,8 +26,21 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
         );
       })
       .reduce((total, currentValue) => (total += currentValue));
-
     // console.log(annualKPIs.GIVForecast);
+
+    // NET SUFFICIENCY
+    annualKPIs.NetSufficiency = productPromoTypeFrequency
+      .map(productPromoTypeFrequency => {
+        selectedKPIs = forecastAssumptions.find(
+          productPromoType =>
+            productPromoType.ID === productPromoTypeFrequency.ID
+        ).KPIs;
+        return (
+          productPromoTypeFrequency.Frequency * selectedKPIs.NetSufficiency
+        );
+      })
+      .reduce((total, currentValue) => (total += currentValue));
+    // console.log(annualKPIs.NetSufficiency);
   }
 
   return (
@@ -34,6 +48,10 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
       <h2>KPI Summary</h2>
       <label htmlFor="GIVForecast">GIV Forecast:</label>
       <output id="GIVForecast">{annualKPIs.GIVForecast}</output>
+      <br />
+      <label htmlFor="NetSufficiency">Net Sufficiency:</label>
+      <output id="NetSufficiency">{annualKPIs.NetSufficiency}</output>
+      <br />
     </React.Fragment>
   );
 };
