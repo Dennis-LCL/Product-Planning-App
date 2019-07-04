@@ -107,12 +107,12 @@ const KPISummary = ({ productPromoTypeFrequency, forecastAssumptions }) => {
           <output id="TotalCost">{annualKPIs.TotalCost}</output>
           <br />
         </div>
-        <HBarChartFundSufficiency
+        {/* <HBarChartFundSufficiency
           annualKPIs={annualKPIs}
           GIVGap={GIVGap}
           GIVForecastIYA={GIVForecastIYA}
           GIVLastYear={GIVLastYear}
-        />
+        /> */}
       </div>
     </React.Fragment>
   );

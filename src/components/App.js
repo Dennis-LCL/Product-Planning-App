@@ -6,18 +6,18 @@ import PromoPlanner from "./PromoPlanner";
 // import PromoPlanner from "./PromoPlanner";
 // import "../styles/App.css";
 
-function App() {
-  return (
-    <React.Fragment>
-      <PromoPlanner
-        productMaster={mockProductMaster}
-        promoTypes={mockPromoTypes}
-        algorithm={mockAlgorithm}
-      />
-      {/* <ChartAnnualSummary /> */}
-      {/* <ChartMonthlyTrend /> */}
-    </React.Fragment>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <PromoPlanner
+          productMaster={mockProductMaster}
+          promoTypes={mockPromoTypes}
+          algorithm={mockAlgorithm}
+        />
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
