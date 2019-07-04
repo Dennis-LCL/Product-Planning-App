@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import logo from "../assets/logo.svg";
 import PromoPlanner from "./PromoPlanner";
 // import ChartAnnualSummary from "./ChartAnnualSummary";
@@ -7,11 +8,31 @@ import PromoPlanner from "./PromoPlanner";
 // import "../styles/App.css";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productMaster: [],
+      promoType: [],
+      algorithm: []
+    };
+  }
+
+  // async componentDidMount() {
+  //   const response = await axios.get("http://localhost:3001/products");
+  //   // const productMaster = response.data;
+  //   // console.log(productMaster);
+  //   // this.productMaster = response.data;
+  //   // console.log(this.productMaster);
+  //   this.setState({ productMaster: response.data });
+  //   console.log("From App.js: ", this.state);
+  // }
+
   render() {
     return (
       <React.Fragment>
         <PromoPlanner
-          productMaster={mockProductMaster}
+          // productMaster={mockProductMaster}
+          productMaster={this.state.productMaster}
           promoTypes={mockPromoTypes}
           algorithm={mockAlgorithm}
         />

@@ -9,6 +9,12 @@ class PromoCalendar extends React.Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.productMaster.length !== this.props.productMaster.length) {
+      this.setState({ productMaster: this.props.productMaster });
+    }
+  }
+
   render() {
     // console.log(this.props.productPromoTypeFrequency);
     // Construct the columns to show product attributes from product master

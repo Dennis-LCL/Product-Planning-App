@@ -5,6 +5,7 @@ import "jest-dom/extend-expect";
 import PromoCalendar from "../components/PromoCalendar";
 import ForecastAssumptions from "../components/ForecastAssumptions";
 import PromoPlanner from "../components/PromoPlanner";
+// import mockAxios from "./axios";
 
 describe("PromoPlanner component should be rendered with required DOM nodes.", () => {
   it("should render and empty PromoPlanner component.", () => {
@@ -20,6 +21,7 @@ describe("PromoPlanner component should be rendered with required DOM nodes.", (
     expect(getByText("Promo Planner")).toBeInTheDocument();
   });
 });
+
 describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAssumptions should show the KPIs for the clicked Product-PromoType combination.", () => {
   it("PromoCalendar should render input fields, each with unique identifier for Product-PromoType combination.", () => {
     const { getByText } = render(
@@ -95,6 +97,7 @@ describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAs
     expect(queryByText("1.83")).toBe(null);
   });
 });
+
 describe("When user input integer into the Product-PromoType cell in PromoCalendar, KPISummary should show annual summary of KPIs.", () => {
   describe("GIV Forecast", () => {
     it("A01 + A02 GIV Forecast = 156000 when there is no promotion.", () => {

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import PromoCalendar from "../components/PromoCalendar";
 import ForecastAssumptions from "../components/ForecastAssumptions";
 import KPISummary from "../components/KPISummary";
@@ -22,11 +23,15 @@ class PromoPlanner extends React.Component {
     );
   }
 
-  componentDidMount() {
+  async componentDidMount() {
+    const response = await axios.get("http://localhost:3001/products");
     this.setState(currentState => {
       const defaultProductPromoTypeFrequency = [];
+      currentState.productMaster = response.data;
+
       // Extract all product codes from productMaster
       const productCodes = [];
+      // currentState.productMaster = response.data;
       currentState.productMaster.map(product => {
         return productCodes.push(product.Code);
       });
