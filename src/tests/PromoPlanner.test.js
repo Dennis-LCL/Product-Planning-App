@@ -31,7 +31,7 @@ describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAs
         algorithm={[]}
       />
     );
-    const inputField = document.getElementById("A02-50% Off");
+    const inputField = document.getElementById("A02-50POFF");
     expect(!!inputField).toBeTruthy();
   });
   it("should trigger ForecastAssumptions to show KPIs correctly when the 10% off input field is focused.", () => {
@@ -42,7 +42,7 @@ describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAs
         algorithm={[]}
       />
     );
-    const inputField = document.getElementById("A01-10% Off");
+    const inputField = document.getElementById("A01-10OFF");
     fireEvent.focus(inputField, { bubbles: false, cancelable: false });
 
     expect(queryByText("120")).toBe(null);
@@ -65,7 +65,7 @@ describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAs
         algorithm={[]}
       />
     );
-    const inputField = document.getElementById("A05-50% Off");
+    const inputField = document.getElementById("A05-50POFF");
     fireEvent.focus(inputField, { bubbles: false, cancelable: false });
 
     // How to test if screen is showing null???????
@@ -80,7 +80,7 @@ describe("When user clicks a Product-PromoType cell in PromoCalendar, ForecastAs
         algorithm={[]}
       />
     );
-    const inputField = document.getElementById("A01-10% Off");
+    const inputField = document.getElementById("A01-10POFF");
     fireEvent.focus(inputField, { bubbles: false, cancelable: false });
     fireEvent.blur(inputField, { bubbles: false, cancelable: false });
 
@@ -118,8 +118,8 @@ describe("When user input integer into the Product-PromoType cell in PromoCalend
           algorithm={mockAlgorithm}
         />
       );
-      const inputField1 = document.getElementById("A01-10% Off");
-      const inputField2 = document.getElementById("A02-10% Off");
+      const inputField1 = document.getElementById("A01-10POFF");
+      const inputField2 = document.getElementById("A02-10POFF");
       fireEvent.change(inputField1, { target: { value: "1" } });
       fireEvent.change(inputField2, { target: { value: "1" } });
       expect(getByLabelText("GIV Forecast:").textContent).toBe("156600");
@@ -132,12 +132,12 @@ describe("When user input integer into the Product-PromoType cell in PromoCalend
           algorithm={mockAlgorithm}
         />
       );
-      const inputField1 = document.getElementById("A01-10% Off");
-      const inputField2 = document.getElementById("A01-30% Off");
-      const inputField3 = document.getElementById("A01-50% Off");
-      const inputField4 = document.getElementById("A02-10% Off");
-      const inputField5 = document.getElementById("A02-30% Off");
-      const inputField6 = document.getElementById("A02-50% Off");
+      const inputField1 = document.getElementById("A01-10POFF");
+      const inputField2 = document.getElementById("A01-30POFF");
+      const inputField3 = document.getElementById("A01-50POFF");
+      const inputField4 = document.getElementById("A02-10POFF");
+      const inputField5 = document.getElementById("A02-30POFF");
+      const inputField6 = document.getElementById("A02-50POFF");
       fireEvent.change(inputField1, { target: { value: "1" } });
       fireEvent.change(inputField2, { target: { value: "1" } });
       fireEvent.change(inputField3, { target: { value: "1" } });
@@ -166,12 +166,12 @@ describe("When user input integer into the Product-PromoType cell in PromoCalend
           algorithm={mockAlgorithm}
         />
       );
-      const inputField1 = document.getElementById("A01-10% Off");
-      const inputField2 = document.getElementById("A01-30% Off");
-      const inputField3 = document.getElementById("A01-50% Off");
-      const inputField4 = document.getElementById("A02-10% Off");
-      const inputField5 = document.getElementById("A02-30% Off");
-      const inputField6 = document.getElementById("A02-50% Off");
+      const inputField1 = document.getElementById("A01-10POFF");
+      const inputField2 = document.getElementById("A01-30POFF");
+      const inputField3 = document.getElementById("A01-50POFF");
+      const inputField4 = document.getElementById("A02-10POFF");
+      const inputField5 = document.getElementById("A02-30POFF");
+      const inputField6 = document.getElementById("A02-50POFF");
       fireEvent.change(inputField1, { target: { value: "1" } });
       fireEvent.change(inputField2, { target: { value: "1" } });
       fireEvent.change(inputField3, { target: { value: "1" } });
@@ -200,12 +200,12 @@ describe("When user input integer into the Product-PromoType cell in PromoCalend
           algorithm={mockAlgorithm}
         />
       );
-      const inputField1 = document.getElementById("A01-10% Off");
-      const inputField2 = document.getElementById("A01-30% Off");
-      const inputField3 = document.getElementById("A01-50% Off");
-      const inputField4 = document.getElementById("A02-10% Off");
-      const inputField5 = document.getElementById("A02-30% Off");
-      const inputField6 = document.getElementById("A02-50% Off");
+      const inputField1 = document.getElementById("A01-10POFF");
+      const inputField2 = document.getElementById("A01-30POFF");
+      const inputField3 = document.getElementById("A01-50POFF");
+      const inputField4 = document.getElementById("A02-10POFF");
+      const inputField5 = document.getElementById("A02-30POFF");
+      const inputField6 = document.getElementById("A02-50POFF");
       fireEvent.change(inputField1, { target: { value: "1" } });
       fireEvent.change(inputField2, { target: { value: "1" } });
       fireEvent.change(inputField3, { target: { value: "1" } });
@@ -234,12 +234,12 @@ describe("When user input integer into the Product-PromoType cell in PromoCalend
           algorithm={mockAlgorithm}
         />
       );
-      const inputField1 = document.getElementById("A01-10% Off");
-      const inputField2 = document.getElementById("A01-30% Off");
-      const inputField3 = document.getElementById("A01-50% Off");
-      const inputField4 = document.getElementById("A02-10% Off");
-      const inputField5 = document.getElementById("A02-30% Off");
-      const inputField6 = document.getElementById("A02-50% Off");
+      const inputField1 = document.getElementById("A01-10POFF");
+      const inputField2 = document.getElementById("A01-30POFF");
+      const inputField3 = document.getElementById("A01-50POFF");
+      const inputField4 = document.getElementById("A02-10POFF");
+      const inputField5 = document.getElementById("A02-30POFF");
+      const inputField6 = document.getElementById("A02-50POFF");
       fireEvent.change(inputField1, { target: { value: "1" } });
       fireEvent.change(inputField2, { target: { value: "1" } });
       fireEvent.change(inputField3, { target: { value: "1" } });
@@ -268,12 +268,12 @@ describe("When user input integer into the Product-PromoType cell in PromoCalend
           algorithm={mockAlgorithm}
         />
       );
-      const inputField1 = document.getElementById("A01-10% Off");
-      const inputField2 = document.getElementById("A01-30% Off");
-      const inputField3 = document.getElementById("A01-50% Off");
-      const inputField4 = document.getElementById("A02-10% Off");
-      const inputField5 = document.getElementById("A02-30% Off");
-      const inputField6 = document.getElementById("A02-50% Off");
+      const inputField1 = document.getElementById("A01-10POFF");
+      const inputField2 = document.getElementById("A01-30POFF");
+      const inputField3 = document.getElementById("A01-50POFF");
+      const inputField4 = document.getElementById("A02-10POFF");
+      const inputField5 = document.getElementById("A02-30POFF");
+      const inputField6 = document.getElementById("A02-50POFF");
       fireEvent.change(inputField1, { target: { value: "1" } });
       fireEvent.change(inputField2, { target: { value: "1" } });
       fireEvent.change(inputField3, { target: { value: "1" } });
@@ -302,12 +302,12 @@ describe("When user input integer into the Product-PromoType cell in PromoCalend
           algorithm={mockAlgorithm}
         />
       );
-      const inputField1 = document.getElementById("A01-10% Off");
-      const inputField2 = document.getElementById("A01-30% Off");
-      const inputField3 = document.getElementById("A01-50% Off");
-      const inputField4 = document.getElementById("A02-10% Off");
-      const inputField5 = document.getElementById("A02-30% Off");
-      const inputField6 = document.getElementById("A02-50% Off");
+      const inputField1 = document.getElementById("A01-10POFF");
+      const inputField2 = document.getElementById("A01-30POFF");
+      const inputField3 = document.getElementById("A01-50POFF");
+      const inputField4 = document.getElementById("A02-10POFF");
+      const inputField5 = document.getElementById("A02-30POFF");
+      const inputField6 = document.getElementById("A02-50POFF");
       fireEvent.change(inputField1, { target: { value: "1" } });
       fireEvent.change(inputField2, { target: { value: "1" } });
       fireEvent.change(inputField3, { target: { value: "1" } });
@@ -357,8 +357,8 @@ const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
 const mockAlgorithm = [
   {
     ID: "A01-NPW",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "Non-Promo Week",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "Non-Promo Week",
     KPIs: {
       ScanUnit: 100,
       BaselineUnit: 100,
@@ -375,8 +375,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A01-10% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "10% Off",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "10% Off",
     KPIs: {
       ScanUnit: 120,
       BaselineUnit: 100,
@@ -393,8 +393,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A01-30% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "30% Off",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "30% Off",
     KPIs: {
       ScanUnit: 300,
       BaselineUnit: 100,
@@ -411,8 +411,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A01-50% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "50% Off",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "50% Off",
     KPIs: {
       ScanUnit: 1000,
       BaselineUnit: 100,
@@ -429,8 +429,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-NPW",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "Non-Promo Week",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "Non-Promo Week",
     KPIs: {
       ScanUnit: 100,
       BaselineUnit: 100,
@@ -447,8 +447,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-10% Off",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "10% Off",
+    // Product: "Scratch Your Sculp Shampoo",
+    // PromoType: "10% Off",
     KPIs: {
       ScanUnit: 120,
       BaselineUnit: 100,
@@ -465,8 +465,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-30% Off",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "30% Off",
+    // Product: "Scratch Your Sculp Shampoo",
+    // PromoType: "30% Off",
     KPIs: {
       ScanUnit: 300,
       BaselineUnit: 100,
@@ -483,8 +483,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-50% Off",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "50% Off",
+    // Product: "Scratch Your Sculp Shampoo",
+    // PromoType: "50% Off",
     KPIs: {
       ScanUnit: 1000,
       BaselineUnit: 100,

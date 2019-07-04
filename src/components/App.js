@@ -33,8 +33,9 @@ class App extends React.Component {
         <PromoPlanner
           // productMaster={mockProductMaster}
           productMaster={this.state.productMaster}
-          promoTypes={mockPromoTypes}
-          algorithm={mockAlgorithm}
+          promoTypes={defaultPromoTypes}
+          // algorithm={mockAlgorithm}
+          algorithm={this.state.algorithm}
         />
       </React.Fragment>
     );
@@ -76,13 +77,13 @@ const mockProductMaster = [
   // }
 ];
 
-const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
+const defaultPromoTypes = ["10% Off", "30% Off", "50% Off"];
 
 const mockAlgorithm = [
   {
     ID: "A01-NPW",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "Non-Promo Week",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "Non-Promo Week",
     KPIs: {
       ScanUnit: 100,
       BaselineUnit: 100,
@@ -99,8 +100,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A01-10POFF",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "10% Off",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "10% Off",
     KPIs: {
       ScanUnit: 120,
       BaselineUnit: 100,
@@ -117,8 +118,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A01-30POFF",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "30% Off",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "30% Off",
     KPIs: {
       ScanUnit: 300,
       BaselineUnit: 100,
@@ -135,8 +136,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A01-50POFF",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "50% Off",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "50% Off",
     KPIs: {
       ScanUnit: 1000,
       BaselineUnit: 100,
@@ -153,8 +154,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-NPW",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "Non-Promo Week",
+    // Product: "Drop Your Hair Shampoo",
+    // PromoType: "Non-Promo Week",
     KPIs: {
       ScanUnit: 100,
       BaselineUnit: 100,
@@ -171,8 +172,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-10POFF",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "10% Off",
+    // Product: "Scratch Your Sculp Shampoo",
+    // PromoType: "10% Off",
     KPIs: {
       ScanUnit: 120,
       BaselineUnit: 100,
@@ -189,8 +190,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-30POFF",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "30% Off",
+    // Product: "Scratch Your Sculp Shampoo",
+    // PromoType: "30% Off",
     KPIs: {
       ScanUnit: 300,
       BaselineUnit: 100,
@@ -207,8 +208,8 @@ const mockAlgorithm = [
   },
   {
     ID: "A02-50POFF",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "50% Off",
+    // Product: "Scratch Your Sculp Shampoo",
+    // PromoType: "50% Off",
     KPIs: {
       ScanUnit: 1000,
       BaselineUnit: 100,

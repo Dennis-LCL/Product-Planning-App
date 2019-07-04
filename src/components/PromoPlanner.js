@@ -28,11 +28,14 @@ class PromoPlanner extends React.Component {
     const promoTypesResponse = await axios.get(
       "http://localhost:3001/promoguidelines/promotypes"
     );
-    console.log("From componentDidMount() : ", promoTypesResponse);
+    const algorithmResponse = await axios.get(
+      "http://localhost:3001/promoparams"
+    );
     this.setState(currentState => {
       const defaultProductPromoTypeFrequency = [];
       currentState.productMaster = productsResponse.data;
       currentState.promoTypes = promoTypesResponse.data;
+      currentState.algorithm = algorithmResponse.data;
 
       // Extract all product codes from productMaster
       const productCodes = [];
