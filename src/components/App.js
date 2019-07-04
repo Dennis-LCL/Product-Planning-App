@@ -98,7 +98,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-10% Off",
+    ID: "A01-10POFF",
     Product: "Drop Your Hair Shampoo",
     PromoType: "10% Off",
     KPIs: {
@@ -116,7 +116,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-30% Off",
+    ID: "A01-30POFF",
     Product: "Drop Your Hair Shampoo",
     PromoType: "30% Off",
     KPIs: {
@@ -134,7 +134,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A01-50% Off",
+    ID: "A01-50POFF",
     Product: "Drop Your Hair Shampoo",
     PromoType: "50% Off",
     KPIs: {
@@ -170,7 +170,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A02-10% Off",
+    ID: "A02-10POFF",
     Product: "Scratch Your Sculp Shampoo",
     PromoType: "10% Off",
     KPIs: {
@@ -188,7 +188,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A02-30% Off",
+    ID: "A02-30POFF",
     Product: "Scratch Your Sculp Shampoo",
     PromoType: "30% Off",
     KPIs: {
@@ -206,7 +206,7 @@ const mockAlgorithm = [
     }
   },
   {
-    ID: "A02-50% Off",
+    ID: "A02-50POFF",
     Product: "Scratch Your Sculp Shampoo",
     PromoType: "50% Off",
     KPIs: {
@@ -242,7 +242,7 @@ const mockAlgorithm = [
   //   }
   // },
   // {
-  //   ID: "A03-10% Off",
+  //   ID: "A03-10POFF",
   //   Product: "Burn The Root Shampoo",
   //   PromoType: "10% Off",
   //   KPIs: {
@@ -260,7 +260,7 @@ const mockAlgorithm = [
   //   }
   // },
   // {
-  //   ID: "A03-30% Off",
+  //   ID: "A03-30POFF",
   //   Product: "Burn The Root Shampoo",
   //   PromoType: "30% Off",
   //   KPIs: {
@@ -278,7 +278,7 @@ const mockAlgorithm = [
   //   }
   // },
   // {
-  //   ID: "A03-50% Off",
+  //   ID: "A03-50POFF",
   //   Product: "Burn The Root Shampoo",
   //   PromoType: "50% Off",
   //   KPIs: {

@@ -24,14 +24,18 @@ class PromoPlanner extends React.Component {
   }
 
   async componentDidMount() {
-    const response = await axios.get("http://localhost:3001/products");
+    const productsResponse = await axios.get("http://localhost:3001/products");
+    const promoTypesResponse = await axios.get(
+      "http://localhost:3001/promoguidelines/promotypes"
+    );
+    console.log("From componentDidMount() : ", promoTypesResponse);
     this.setState(currentState => {
       const defaultProductPromoTypeFrequency = [];
-      currentState.productMaster = response.data;
+      currentState.productMaster = productsResponse.data;
+      currentState.promoTypes = promoTypesResponse.data;
 
       // Extract all product codes from productMaster
       const productCodes = [];
-      // currentState.productMaster = response.data;
       currentState.productMaster.map(product => {
         return productCodes.push(product.Code);
       });
@@ -39,7 +43,7 @@ class PromoPlanner extends React.Component {
       for (let i = 0; i < productCodes.length; i++) {
         for (let j = 0; j < currentState.promoTypes.length; j++) {
           let tempObj = {
-            ID: productCodes[i] + "-" + currentState.promoTypes[j],
+            ID: productCodes[i] + "-" + currentState.promoTypes[j].PTID,
             Frequency: 0
           };
           defaultProductPromoTypeFrequency.push(tempObj);

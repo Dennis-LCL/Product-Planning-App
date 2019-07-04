@@ -11,7 +11,10 @@ class PromoCalendar extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.productMaster.length !== this.props.productMaster.length) {
-      this.setState({ productMaster: this.props.productMaster });
+      this.setState({
+        productMaster: this.props.productMaster,
+        promoTypes: this.props.promoTypes
+      });
     }
   }
 
@@ -30,7 +33,7 @@ class PromoCalendar extends React.Component {
     // Construct the columns to show promo types from promo types
     const promoTypeExist = this.state.promoTypes.length !== 0 && true;
     const promoTypeColumns = promoTypeExist ? (
-      this.state.promoTypes.map(promoType => <th>{promoType}</th>)
+      this.state.promoTypes.map(promoType => <th>{promoType.PromoType}</th>)
     ) : (
       <th>Promo Type</th>
     );
@@ -61,7 +64,7 @@ class PromoCalendar extends React.Component {
         const promoFrequencyCells = this.state.promoTypes.map(promoType => {
           // Construct the PromoCalendarInputCell ID
           let promoCalendarInputCellId =
-            this.state.productMaster[i].Code + "-" + promoType;
+            this.state.productMaster[i].Code + "-" + promoType.PTID;
 
           return (
             <td>
