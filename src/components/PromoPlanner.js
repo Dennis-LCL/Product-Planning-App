@@ -24,13 +24,24 @@ class PromoPlanner extends React.Component {
   }
 
   async componentDidMount() {
-    const productsResponse = await axios.get("http://localhost:3001/products");
+    // const productsResponse = await axios.get("http://localhost:3001/products");
+    // const promoTypesResponse = await axios.get(
+    //   "http://localhost:3001/promoguidelines/promotypes"
+    // );
+    // const algorithmResponse = await axios.get(
+    //   "http://localhost:3001/promoparams"
+    // );
+
+    const productsResponse = await axios.get(
+      "https://wishful-product-planning-api.herokuapp.com/products"
+    );
     const promoTypesResponse = await axios.get(
-      "http://localhost:3001/promoguidelines/promotypes"
+      "https://wishful-product-planning-api.herokuapp.com/promoguidelines/promotypes"
     );
     const algorithmResponse = await axios.get(
-      "http://localhost:3001/promoparams"
+      "https://wishful-product-planning-api.herokuapp.com/promoparams"
     );
+
     this.setState(currentState => {
       const defaultProductPromoTypeFrequency = [];
       currentState.productMaster = productsResponse.data;
