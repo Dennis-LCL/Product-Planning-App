@@ -75,9 +75,8 @@ describe("Promo Calendar's initial condition when user launches it the first tim
           productPromoTypeFrequency={[]}
         />
       );
-      console.log(mockPromoTypes);
       for (let i = 0; i < mockPromoTypes.length; i++) {
-        expect(getByText(mockPromoTypes[i])).toBeInTheDocument();
+        expect(getByText(mockPromoTypes[i].PromoType)).toBeInTheDocument();
       }
     });
   });
@@ -94,7 +93,6 @@ describe("Promo Calendar's initial condition when user launches it the first tim
       const numberOfRenderedProducts = getAllByText(/Boldie/i).length;
       expect(numberOfRenderedProducts).toBe(mockProductMaster.length);
     });
-    it.skip("should populate the product attributes correctly per Promo Calendar columns.", () => {});
   });
 
   describe("Each Product's initial value for Promo Types should be 0 with Non-Promo Week set to 52.", () => {
@@ -125,44 +123,35 @@ describe("Promo Calendar's initial condition when user launches it the first tim
       );
       expect(getAllByText("52").length).toBe(mockProductMaster.length);
     });
-
-    it.skip("should assign a unique ID for each input field, representing a product-promo type combination.", () => {
-      return false;
-    });
   });
 });
 
 const mockProductMaster = [
   {
+    Code: "A01",
     Brand: "Boldie",
     Group: "Shampoo 250ml",
-    Code: "A01",
     Description: "Drop Your Hair Shampoo"
   },
   {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
     Code: "A02",
+    Brand: "Boldie",
+    Group: "Shampoo 250ml",
     Description: "Scratch Your Sculp Shampoo"
-  },
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A03",
-    Description: "Burn The Root Shampoo"
-  },
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A04",
-    Description: "Let It Snow Shampoo"
-  },
-  {
-    Brand: "Boldie",
-    Group: "Shampoo 250ml",
-    Code: "A05",
-    Description: "Volumn Reduction Shampoo"
   }
 ];
 
-const mockPromoTypes = ["10% Off", "30% Off", "50% Off"];
+const mockPromoTypes = [
+  {
+    PTID: "10POFF",
+    PromoType: "10% Off"
+  },
+  {
+    PTID: "30POFF",
+    PromoType: "30% Off"
+  },
+  {
+    PTID: "50POFF",
+    PromoType: "50% Off"
+  }
+];

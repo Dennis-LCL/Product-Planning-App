@@ -3,6 +3,7 @@ import axios from "axios";
 import PromoCalendar from "../components/PromoCalendar";
 import ForecastAssumptions from "../components/ForecastAssumptions";
 import KPISummary from "../components/KPISummary";
+import PlanController from "../components/PlanController";
 import "../styles/PromoPlanner.css";
 
 class PromoPlanner extends React.Component {
@@ -13,7 +14,9 @@ class PromoPlanner extends React.Component {
       promoTypes: props.promoTypes,
       algorithm: props.algorithm,
       productPromoTypeFrequency: [],
-      focusedProductPromoType: ""
+      focusedProductPromoType: "",
+      availablePlans: [],
+      currentPlan: []
     };
     this.handle_PromoCalendarInput_focusToggle = this.handle_PromoCalendarInput_focusToggle.bind(
       this
@@ -28,9 +31,7 @@ class PromoPlanner extends React.Component {
     // const promoTypesResponse = await axios.get(
     //   "http://localhost:3001/promoguidelines/promotypes"
     // );
-    // const algorithmResponse = await axios.get(
-    //   "http://localhost:3001/promoparams"
-    // );
+    // const algorithmResponse = await axios.get("http://localhost:3001/promoparams");
 
     const productsResponse = await axios.get(
       "https://wishful-product-planning-api.herokuapp.com/products"
@@ -122,6 +123,10 @@ class PromoPlanner extends React.Component {
     return (
       <React.Fragment>
         <h1>Promo Planner</h1>
+        <PlanController
+          availablePlans={this.state.availablePlans}
+          currentPlan={this.state.currentPlan}
+        />
         <KPISummary
           productPromoTypeFrequency={this.state.productPromoTypeFrequency}
           forecastAssumptions={this.state.algorithm}

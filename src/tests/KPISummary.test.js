@@ -48,9 +48,9 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 GIV Forecast = 78000 when there is no promotion.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 52 },
-        { ID: "A01-10% Off", Frequency: 0 },
-        { ID: "A01-30% Off", Frequency: 0 },
-        { ID: "A01-50% Off", Frequency: 0 }
+        { ID: "A01-10POFF", Frequency: 0 },
+        { ID: "A01-30POFF", Frequency: 0 },
+        { ID: "A01-50POFF", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -63,9 +63,9 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 GIV Forecast = 78300 with 1 week 10% Off.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 51 },
-        { ID: "A01-10% Off", Frequency: 1 },
-        { ID: "A01-30% Off", Frequency: 0 },
-        { ID: "A01-50% Off", Frequency: 0 }
+        { ID: "A01-10POFF", Frequency: 1 },
+        { ID: "A01-30POFF", Frequency: 0 },
+        { ID: "A01-50POFF", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -78,9 +78,9 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 GIV Forecast = 78600 with 2 week 10% Off.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 50 },
-        { ID: "A01-10% Off", Frequency: 2 },
-        { ID: "A01-30% Off", Frequency: 0 },
-        { ID: "A01-50% Off", Frequency: 0 }
+        { ID: "A01-10POFF", Frequency: 2 },
+        { ID: "A01-30POFF", Frequency: 0 },
+        { ID: "A01-50POFF", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -93,9 +93,9 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 GIV Forecast = 81300 with 1 week 10% Off and 1 week 30% Off.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 50 },
-        { ID: "A01-10% Off", Frequency: 1 },
-        { ID: "A01-30% Off", Frequency: 1 },
-        { ID: "A01-50% Off", Frequency: 0 }
+        { ID: "A01-10POFF", Frequency: 1 },
+        { ID: "A01-30POFF", Frequency: 1 },
+        { ID: "A01-50POFF", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -108,9 +108,9 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 GIV Forecast = 94800 with 1 week 10% Off, 1 week 30% Off, and 1 week 50% Off.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 49 },
-        { ID: "A01-10% Off", Frequency: 1 },
-        { ID: "A01-30% Off", Frequency: 1 },
-        { ID: "A01-50% Off", Frequency: 1 }
+        { ID: "A01-10POFF", Frequency: 1 },
+        { ID: "A01-30POFF", Frequency: 1 },
+        { ID: "A01-50POFF", Frequency: 1 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -123,13 +123,13 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 + A02 GIV Forecast = 156000 when there is no promotion.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 52 },
-        { ID: "A01-10% Off", Frequency: 0 },
-        { ID: "A01-30% Off", Frequency: 0 },
-        { ID: "A01-50% Off", Frequency: 0 },
+        { ID: "A01-10POFF", Frequency: 0 },
+        { ID: "A01-30POFF", Frequency: 0 },
+        { ID: "A01-50POFF", Frequency: 0 },
         { ID: "A02-NPW", Frequency: 52 },
-        { ID: "A02-10% Off", Frequency: 0 },
-        { ID: "A02-30% Off", Frequency: 0 },
-        { ID: "A02-50% Off", Frequency: 0 }
+        { ID: "A02-10POFF", Frequency: 0 },
+        { ID: "A02-30POFF", Frequency: 0 },
+        { ID: "A02-50POFF", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -142,13 +142,13 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 + A02 GIV Forecast = 156600 with 1 week 10% Off each.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 51 },
-        { ID: "A01-10% Off", Frequency: 1 },
-        { ID: "A01-30% Off", Frequency: 0 },
-        { ID: "A01-50% Off", Frequency: 0 },
+        { ID: "A01-10POFF", Frequency: 1 },
+        { ID: "A01-30POFF", Frequency: 0 },
+        { ID: "A01-50POFF", Frequency: 0 },
         { ID: "A02-NPW", Frequency: 51 },
-        { ID: "A02-10% Off", Frequency: 1 },
-        { ID: "A02-30% Off", Frequency: 0 },
-        { ID: "A02-50% Off", Frequency: 0 }
+        { ID: "A02-10POFF", Frequency: 1 },
+        { ID: "A02-30POFF", Frequency: 0 },
+        { ID: "A02-50POFF", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -161,13 +161,13 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 + A02 GIV Forecast = 157200 with 2 week 10% Off.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 50 },
-        { ID: "A01-10% Off", Frequency: 2 },
-        { ID: "A01-30% Off", Frequency: 0 },
-        { ID: "A01-50% Off", Frequency: 0 },
+        { ID: "A01-10POFF", Frequency: 2 },
+        { ID: "A01-30POFF", Frequency: 0 },
+        { ID: "A01-50POFF", Frequency: 0 },
         { ID: "A02-NPW", Frequency: 50 },
-        { ID: "A02-10% Off", Frequency: 2 },
-        { ID: "A02-30% Off", Frequency: 0 },
-        { ID: "A02-50% Off", Frequency: 0 }
+        { ID: "A02-10POFF", Frequency: 2 },
+        { ID: "A02-30POFF", Frequency: 0 },
+        { ID: "A02-50POFF", Frequency: 0 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -180,13 +180,13 @@ describe("KPISummary component should calculate Annual Summary KPIs correctly.",
     it("A01 + A02 GIV Forecast = 189600 with 1 week 10% Off, 1 week 30% Off, and 1 week 50% Off.", () => {
       mockProductPromoTypeFrequency = [
         { ID: "A01-NPW", Frequency: 49 },
-        { ID: "A01-10% Off", Frequency: 1 },
-        { ID: "A01-30% Off", Frequency: 1 },
-        { ID: "A01-50% Off", Frequency: 1 },
+        { ID: "A01-10POFF", Frequency: 1 },
+        { ID: "A01-30POFF", Frequency: 1 },
+        { ID: "A01-50POFF", Frequency: 1 },
         { ID: "A02-NPW", Frequency: 49 },
-        { ID: "A02-10% Off", Frequency: 1 },
-        { ID: "A02-30% Off", Frequency: 1 },
-        { ID: "A02-50% Off", Frequency: 1 }
+        { ID: "A02-10POFF", Frequency: 1 },
+        { ID: "A02-30POFF", Frequency: 1 },
+        { ID: "A02-50POFF", Frequency: 1 }
       ];
       const { getByLabelText } = render(
         <KPISummary
@@ -205,9 +205,6 @@ describe("KPISummary component should load the annual target for selected KPIs."
 
 const mockForecastAssumptions = [
   {
-    ID: "A01-NPW",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "Non-Promo Week",
     KPIs: {
       ScanUnit: 100,
       BaselineUnit: 100,
@@ -220,12 +217,10 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: 375,
       ROI: 0
-    }
+    },
+    ID: "A01-NPW"
   },
   {
-    ID: "A01-10% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "10% Off",
     KPIs: {
       ScanUnit: 120,
       BaselineUnit: 100,
@@ -238,12 +233,10 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: 90,
       ROI: 1.83
-    }
+    },
+    ID: "A01-10POFF"
   },
   {
-    ID: "A01-30% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "30% Off",
     KPIs: {
       ScanUnit: 300,
       BaselineUnit: 100,
@@ -256,12 +249,10 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: -1575,
       ROI: 1.11
-    }
+    },
+    ID: "A01-30POFF"
   },
   {
-    ID: "A01-50% Off",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "50% Off",
     KPIs: {
       ScanUnit: 1000,
       BaselineUnit: 100,
@@ -274,12 +265,10 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: -11250,
       ROI: 0.9
-    }
+    },
+    ID: "A01-50POFF"
   },
   {
-    ID: "A01-NPW",
-    Product: "Drop Your Hair Shampoo",
-    PromoType: "Non-Promo Week",
     KPIs: {
       ScanUnit: 100,
       BaselineUnit: 100,
@@ -292,12 +281,10 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: 375,
       ROI: 0
-    }
+    },
+    ID: "A02-NPW"
   },
   {
-    ID: "A02-10% Off",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "10% Off",
     KPIs: {
       ScanUnit: 120,
       BaselineUnit: 100,
@@ -310,12 +297,10 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: 90,
       ROI: 1.83
-    }
+    },
+    ID: "A02-10POFF"
   },
   {
-    ID: "A02-30% Off",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "30% Off",
     KPIs: {
       ScanUnit: 300,
       BaselineUnit: 100,
@@ -328,12 +313,10 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: -1575,
       ROI: 1.11
-    }
+    },
+    ID: "A02-30POFF"
   },
   {
-    ID: "A02-50% Off",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "50% Off",
     KPIs: {
       ScanUnit: 1000,
       BaselineUnit: 100,
@@ -346,24 +329,7 @@ const mockForecastAssumptions = [
       FundRate: 0.25,
       NetSufficiency: -11250,
       ROI: 0.9
-    }
-  },
-  {
-    ID: "A02-NPW",
-    Product: "Scratch Your Sculp Shampoo",
-    PromoType: "Non-Promo Week",
-    KPIs: {
-      ScanUnit: 100,
-      BaselineUnit: 100,
-      IncrementalUnit: 0,
-      IncrementalGIV: 0,
-      BaseListPrice: 15,
-      TotalCost: 0,
-      ScanDealUnitCost: 0,
-      TotalBudget: 375,
-      FundRate: 0.25,
-      NetSufficiency: 375,
-      ROI: 0
-    }
+    },
+    ID: "A02-50POFF"
   }
 ];
