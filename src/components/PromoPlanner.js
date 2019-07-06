@@ -115,7 +115,8 @@ class PromoPlanner extends React.Component {
     this.setState({
       availablePlans: response.data,
       newPlanName: "",
-      currentPlan: { PlanID: 0 }
+      currentPlan: { PlanID: 0 },
+      productPromoTypeFrequency: []
     });
   }
 
