@@ -61,15 +61,25 @@ class PromoCalendar extends React.Component {
           attribute => <td>{attribute}</td>
         );
         // Add PromoCalendarInputCells into productRows
+        const isProductPromoTypeFrequencyReceived =
+          this.props.productPromoTypeFrequency.length !== 0 && true;
         const promoFrequencyCells = this.state.promoTypes.map(promoType => {
           // Construct the PromoCalendarInputCell ID
           let promoCalendarInputCellId =
             this.state.productMaster[i].Code + "-" + promoType.PTID;
 
+          let numberOfPromoWeeks = isProductPromoTypeFrequencyReceived
+            ? this.props.productPromoTypeFrequency.find(
+                productPromoType =>
+                  productPromoType.ID === promoCalendarInputCellId
+              ).Frequency
+            : 0;
+
           return (
             <td>
               <PromoCalendarInputCell
                 id={promoCalendarInputCellId}
+                numberOfPromoWeeks={numberOfPromoWeeks}
                 handle_PromoCalendarInput_focusToggle={
                   this.props.handle_PromoCalendarInput_focusToggle
                 }
@@ -83,8 +93,6 @@ class PromoCalendar extends React.Component {
         // Add Non-Promo-Week frequency to the productRows
         // Write something here!!!
 
-        const isProductPromoTypeFrequencyReceived =
-          this.props.productPromoTypeFrequency.length !== 0 && true;
         const nonPromoWeekId = this.state.productMaster[i].Code + "-NPW";
         // console.log(nonPromoWeekId);
 
@@ -132,6 +140,7 @@ function PromoCalendarInputCell(props) {
       id={props.id}
       className="promoFrequency"
       placeholder="--"
+      value={props.numberOfPromoWeeks}
       onFocus={() => props.handle_PromoCalendarInput_focusToggle(props.id)}
       onBlur={() => props.handle_PromoCalendarInput_focusToggle("")}
       onChange={event =>
