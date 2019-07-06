@@ -85,16 +85,21 @@ class PromoPlanner extends React.Component {
     // STEP 3: Call this.setState to update currentPlan and productPromoTypeFrquency
     const planID = event.target.value;
     console.log(planID);
-    const response = await axios.get(
-      `http://localhost:3001/promoplans/${planID}`
-    );
-    const promoPlan = response.data.PlanDetail;
-    promoPlan.map(plan => {
-      delete plan._id;
-      return;
-    });
-    delete promoPlan._id;
-    console.log(promoPlan);
+    let promoPlan;
+
+    if (planID === "0") {
+      promoPlan = [];
+    } else {
+      const response = await axios.get(
+        `http://localhost:3001/promoplans/${planID}`
+      );
+      promoPlan = response.data.PlanDetail;
+      promoPlan.map(plan => {
+        delete plan._id;
+      });
+      delete promoPlan._id;
+      console.log(promoPlan);
+    }
     this.setState({
       productPromoTypeFrequency: promoPlan,
       currentPlan: planID
