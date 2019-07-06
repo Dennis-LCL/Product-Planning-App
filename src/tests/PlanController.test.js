@@ -53,6 +53,13 @@ describe("PlanController component should control which plan is shown on screen.
     expect(getByText("1st Draft Plan")).toBeInTheDocument();
     expect(getByText("Proposed Plan")).toBeInTheDocument();
   });
+
+  it("should show an empty plan in the drop-down list", () => {
+    const { getByText } = render(
+      <PlanController availablePlans={mockAvailablePlans} currentPlan={[]} />
+    );
+    expect(getByText("--Select a Plan--")).toBeInTheDocument();
+  });
 });
 
 const mockAvailablePlans = [

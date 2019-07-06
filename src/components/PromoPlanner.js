@@ -15,7 +15,7 @@ class PromoPlanner extends React.Component {
       algorithm: props.algorithm,
       productPromoTypeFrequency: [],
       focusedProductPromoType: "",
-      availablePlans: [],
+      availablePlans: props.availablePlans,
       currentPlan: []
     };
     this.handle_PromoCalendarInput_focusToggle = this.handle_PromoCalendarInput_focusToggle.bind(
