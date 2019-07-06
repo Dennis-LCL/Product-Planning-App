@@ -118,7 +118,7 @@ class PromoPlanner extends React.Component {
     this.setState({
       availablePlans: response.data,
       newPlanName: "",
-      currentPlan: newlyCreatedPlan.data.PlanID
+      currentPlan: { PlanID: newlyCreatedPlan.data.PlanID }
     });
   }
 
@@ -136,7 +136,7 @@ class PromoPlanner extends React.Component {
       };
     }
     await axios.put(
-      `http://localhost:3001/promoplans/${this.state.currentPlan}`,
+      `http://localhost:3001/promoplans/${this.state.currentPlan.PlanID}`,
       promoPlanUpdate
     );
     const response = await axios.get(
@@ -163,7 +163,7 @@ class PromoPlanner extends React.Component {
     }
     this.setState({
       productPromoTypeFrequency: promoPlan,
-      currentPlan: planID,
+      currentPlan: { PlanID: Number(planID) },
       newPlanName: ""
     });
   }
