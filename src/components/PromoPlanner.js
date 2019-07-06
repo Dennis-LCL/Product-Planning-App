@@ -20,6 +20,10 @@ class PromoPlanner extends React.Component {
       newPlanName: ""
     };
 
+    this.handle_DeleteCurrentPlan_onClick = this.handle_DeleteCurrentPlan_onClick.bind(
+      this
+    );
+
     this.handle_SaveAsNewPlan_onClick = this.handle_SaveAsNewPlan_onClick.bind(
       this
     );
@@ -59,7 +63,7 @@ class PromoPlanner extends React.Component {
       "https://wishful-product-planning-api.herokuapp.com/promoparams"
     );
     const availablePlanResponse = await axios.get(
-      "http://localhost:3001/promoplans/list/all"
+      "https://wishful-product-planning-api.herokuapp.com/promoplans/list/all"
     );
 
     this.setState(currentState => {
@@ -99,6 +103,22 @@ class PromoPlanner extends React.Component {
     this.setState({ newPlanName: event.target.value });
   }
 
+  async handle_DeleteCurrentPlan_onClick() {
+    await axios.delete(
+      `https://wishful-product-planning-api.herokuapp.com/promoplans/${
+        this.state.currentPlan.PlanID
+      }`
+    );
+    const response = await axios.get(
+      "https://wishful-product-planning-api.herokuapp.com/promoplans/list/all"
+    );
+    this.setState({
+      availablePlans: response.data,
+      newPlanName: "",
+      currentPlan: { PlanID: 0 }
+    });
+  }
+
   async handle_SaveAsNewPlan_onClick() {
     let newPromoPlan;
 
@@ -109,11 +129,11 @@ class PromoPlanner extends React.Component {
     };
 
     const newlyCreatedPlan = await axios.post(
-      "http://localhost:3001/promoplans/",
+      "https://wishful-product-planning-api.herokuapp.com/promoplans/",
       newPromoPlan
     );
     const response = await axios.get(
-      "http://localhost:3001/promoplans/list/all"
+      "https://wishful-product-planning-api.herokuapp.com/promoplans/list/all"
     );
     this.setState({
       availablePlans: response.data,
@@ -136,11 +156,13 @@ class PromoPlanner extends React.Component {
       };
     }
     await axios.put(
-      `http://localhost:3001/promoplans/${this.state.currentPlan.PlanID}`,
+      `https://wishful-product-planning-api.herokuapp.com/promoplans/${
+        this.state.currentPlan.PlanID
+      }`,
       promoPlanUpdate
     );
     const response = await axios.get(
-      "http://localhost:3001/promoplans/list/all"
+      "https://wishful-product-planning-api.herokuapp.com/promoplans/list/all"
     );
     this.setState({ availablePlans: response.data, newPlanName: "" });
   }
@@ -153,7 +175,7 @@ class PromoPlanner extends React.Component {
       promoPlan = [];
     } else {
       const response = await axios.get(
-        `http://localhost:3001/promoplans/${planID}`
+        `https://wishful-product-planning-api.herokuapp.com/promoplans/${planID}`
       );
       promoPlan = response.data.PlanDetail;
       promoPlan.map(plan => {
@@ -227,6 +249,9 @@ class PromoPlanner extends React.Component {
           }
           handle_SaveCurrentPlan_onClick={this.handle_SaveCurrentPlan_onClick}
           handle_SaveAsNewPlan_onClick={this.handle_SaveAsNewPlan_onClick}
+          handle_DeleteCurrentPlan_onClick={
+            this.handle_DeleteCurrentPlan_onClick
+          }
         />
         <KPISummary
           productPromoTypeFrequency={this.state.productPromoTypeFrequency}

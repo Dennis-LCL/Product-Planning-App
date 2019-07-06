@@ -8,7 +8,8 @@ const PlanController = ({
   handle_PlanSelectorDropDown_onChange,
   handle_NewPlanNameInput_onChange,
   handle_SaveCurrentPlan_onClick,
-  handle_SaveAsNewPlan_onClick
+  handle_SaveAsNewPlan_onClick,
+  handle_DeleteCurrentPlan_onClick
 }) => {
   const options = [];
   options.push(<option value="0">--Select a Plan--</option>);
@@ -47,6 +48,13 @@ const PlanController = ({
           onClick={handle_SaveAsNewPlan_onClick}
         >
           Save as New Plan
+        </button>
+        <button
+          type="button"
+          id="DeleteCurrentPlan"
+          onClick={handle_DeleteCurrentPlan_onClick}
+        >
+          Delete Current Plan
         </button>
       </React.Fragment>
     );
