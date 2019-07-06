@@ -15,10 +15,14 @@ class PromoPlanner extends React.Component {
       algorithm: props.algorithm,
       productPromoTypeFrequency: [],
       focusedProductPromoType: "",
-      availablePlans: props.availablePlans,
+      availablePlans: [],
       currentPlan: { PlanID: 0 },
       newPlanName: ""
     };
+
+    this.handle_SaveAsNewPlan_onClick = this.handle_SaveAsNewPlan_onClick.bind(
+      this
+    );
 
     this.handle_SaveCurrentPlan_onClick = this.handle_SaveCurrentPlan_onClick.bind(
       this
@@ -54,12 +58,16 @@ class PromoPlanner extends React.Component {
     const algorithmResponse = await axios.get(
       "https://wishful-product-planning-api.herokuapp.com/promoparams"
     );
+    const availablePlanResponse = await axios.get(
+      "http://localhost:3001/promoplans/list/all"
+    );
 
     this.setState(currentState => {
       const defaultProductPromoTypeFrequency = [];
       currentState.productMaster = productsResponse.data;
       currentState.promoTypes = promoTypesResponse.data;
       currentState.algorithm = algorithmResponse.data;
+      currentState.availablePlans = availablePlanResponse.data;
 
       // Extract all product codes from productMaster
       const productCodes = [];
@@ -81,7 +89,6 @@ class PromoPlanner extends React.Component {
         };
         defaultProductPromoTypeFrequency.push(nonPromoWeekFrequency);
       }
-      // console.log(defaultProductPromoTypeFrequency);
       return {
         productPromoTypeFrequency: defaultProductPromoTypeFrequency
       };
@@ -92,17 +99,30 @@ class PromoPlanner extends React.Component {
     this.setState({ newPlanName: event.target.value });
   }
 
+  async handle_SaveAsNewPlan_onClick() {
+    let newPromoPlan;
+
+    const newPromoPlanName = this.state.newPlanName || "New Plan";
+    newPromoPlan = {
+      Name: newPromoPlanName,
+      PlanDetail: this.state.productPromoTypeFrequency
+    };
+
+    const newlyCreatedPlan = await axios.post(
+      "http://localhost:3001/promoplans/",
+      newPromoPlan
+    );
+    const response = await axios.get(
+      "http://localhost:3001/promoplans/list/all"
+    );
+    this.setState({
+      availablePlans: response.data,
+      newPlanName: "",
+      currentPlan: newlyCreatedPlan.data.PlanID
+    });
+  }
+
   async handle_SaveCurrentPlan_onClick() {
-    // STEP 1: Check if the current plan's plan name is changed by looking at this.state.newPlanName
-    //    IF this.state.newPlanName has no value (i.e. ""), then
-    //    STEP 2-1: use this.state.currentPlan as the param and call PUT API
-    //    STEP 2-2: use this.state.productPromoTypeFrequency as the body of the PUT API
-    //
-    //    IF this.state.newPlanName has value (i.e. not ""), then
-    //    STEP 3-1: use this.state.currentPlan as the param and call PUT API
-    //    STEP 3-2: create a object called promoPlanUpdate
-    //    STEP 3-3: put this.state.newPlanName as the value for key "Name"
-    //    STEP 3-4: put this.state.productPromoTypeFrequency as the value for the key "PlanDetail"
     let promoPlanUpdate;
 
     if (this.state.newPlanName) {
@@ -115,7 +135,6 @@ class PromoPlanner extends React.Component {
         PlanDetail: this.state.productPromoTypeFrequency
       };
     }
-    console.log(promoPlanUpdate);
     await axios.put(
       `http://localhost:3001/promoplans/${this.state.currentPlan}`,
       promoPlanUpdate
@@ -123,15 +142,11 @@ class PromoPlanner extends React.Component {
     const response = await axios.get(
       "http://localhost:3001/promoplans/list/all"
     );
-    this.setState({ availablePlans: response.data });
+    this.setState({ availablePlans: response.data, newPlanName: "" });
   }
 
   async handle_PlanSelectorDropDown_onChange(event) {
-    // STEP 1: Get the selected PlanID from the Plan Controller component
-    // STEP 2: Use async await to call remote API to get the full plan using PlanID
-    // STEP 3: Call this.setState to update currentPlan and productPromoTypeFrquency
     const planID = event.target.value;
-    console.log(planID);
     let promoPlan;
 
     if (planID === "0") {
@@ -145,14 +160,12 @@ class PromoPlanner extends React.Component {
         delete plan._id;
       });
       delete promoPlan._id;
-      console.log(promoPlan);
     }
     this.setState({
       productPromoTypeFrequency: promoPlan,
       currentPlan: planID,
       newPlanName: ""
     });
-    console.log(this.state);
   }
 
   handle_PromoCalendarInput_focusToggle(productPromoTypeId) {
@@ -213,6 +226,7 @@ class PromoPlanner extends React.Component {
             this.handle_NewPlanNameInput_onChange
           }
           handle_SaveCurrentPlan_onClick={this.handle_SaveCurrentPlan_onClick}
+          handle_SaveAsNewPlan_onClick={this.handle_SaveAsNewPlan_onClick}
         />
         <KPISummary
           productPromoTypeFrequency={this.state.productPromoTypeFrequency}

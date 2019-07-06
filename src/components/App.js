@@ -22,7 +22,7 @@ class App extends React.Component {
           productMaster={this.state.productMaster}
           promoTypes={defaultPromoTypes}
           algorithm={this.state.algorithm}
-          availablePlans={mockAvailablePlans}
+          availablePlans={[]}
         />
       </React.Fragment>
     );
@@ -32,13 +32,3 @@ class App extends React.Component {
 export default App;
 
 const defaultPromoTypes = ["10% Off", "30% Off", "50% Off"];
-const mockAvailablePlans = [
-  {
-    PlanID: 1,
-    Name: "1st Draft Plan"
-  },
-  {
-    PlanID: 2,
-    Name: "Proposed Plan"
-  }
-];
