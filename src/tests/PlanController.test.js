@@ -60,6 +60,15 @@ describe("PlanController component should control which plan is shown on screen.
     );
     expect(getByText("--Select a Plan--")).toBeInTheDocument();
   });
+
+  xit("should show promo plan based on selected Plan ID", () => {
+    const { getByText } = render(
+      <PlanController
+        availablePlans={mockAvailablePlans}
+        currentPlan={{ PlanID: 1 }}
+      />
+    );
+  });
 });
 
 const mockAvailablePlans = [

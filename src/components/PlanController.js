@@ -1,7 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-const PlanController = ({ availablePlans, currentPlan }) => {
+const PlanController = ({
+  availablePlans,
+  currentPlan,
+  handle_PlanSelectorDropDown_onChange
+}) => {
   const options = [];
   options.push(<option value={0}>--Select a Plan--</option>);
   availablePlans.map(plan =>
@@ -9,7 +13,12 @@ const PlanController = ({ availablePlans, currentPlan }) => {
   );
   return (
     <React.Fragment>
-      <select id="PlanSelector" name="PlanSelector" value={currentPlan}>
+      <select
+        id="PlanSelector"
+        name="PlanSelector"
+        value={currentPlan}
+        onChange={event => handle_PlanSelectorDropDown_onChange(event)}
+      >
         {options}
       </select>
       <input

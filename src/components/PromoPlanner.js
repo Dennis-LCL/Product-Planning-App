@@ -16,8 +16,11 @@ class PromoPlanner extends React.Component {
       productPromoTypeFrequency: [],
       focusedProductPromoType: "",
       availablePlans: props.availablePlans,
-      currentPlan: []
+      currentPlan: { PlanID: 0 }
     };
+    this.handle_PlanSelectorDropDown_onChange = this.handle_PlanSelectorDropDown_onChange.bind(
+      this
+    );
     this.handle_PromoCalendarInput_focusToggle = this.handle_PromoCalendarInput_focusToggle.bind(
       this
     );
@@ -76,6 +79,29 @@ class PromoPlanner extends React.Component {
     });
   }
 
+  async handle_PlanSelectorDropDown_onChange(event) {
+    // STEP 1: Get the selected PlanID from the Plan Controller component
+    // STEP 2: Use async await to call remote API to get the full plan using PlanID
+    // STEP 3: Call this.setState to update currentPlan and productPromoTypeFrquency
+    const planID = event.target.value;
+    console.log(planID);
+    const response = await axios.get(
+      `http://localhost:3001/promoplans/${planID}`
+    );
+    const promoPlan = response.data.PlanDetail;
+    promoPlan.map(plan => {
+      delete plan._id;
+      return;
+    });
+    delete promoPlan._id;
+    console.log(promoPlan);
+    this.setState({
+      productPromoTypeFrequency: promoPlan,
+      currentPlan: planID
+    });
+    console.log(this.state);
+  }
+
   handle_PromoCalendarInput_focusToggle(productPromoTypeId) {
     this.setState(currentState => {
       return { focusedProductPromoType: productPromoTypeId };
@@ -126,6 +152,9 @@ class PromoPlanner extends React.Component {
         <PlanController
           availablePlans={this.state.availablePlans}
           currentPlan={this.state.currentPlan}
+          handle_PlanSelectorDropDown_onChange={
+            this.handle_PlanSelectorDropDown_onChange
+          }
         />
         <KPISummary
           productPromoTypeFrequency={this.state.productPromoTypeFrequency}
