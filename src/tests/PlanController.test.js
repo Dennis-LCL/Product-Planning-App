@@ -20,11 +20,11 @@ describe("PlanController component should be rendered with required DOM nodes.",
     expect(inputField).toBeTruthy();
   });
 
-  it("should render a input field with id 'PlanName'.", () => {
+  it("should render a input field with id 'NewPlanName'.", () => {
     const { getByText } = render(
       <PlanController availablePlans={[]} currentPlan={[]} />
     );
-    const inputField = document.getElementById("PlanName");
+    const inputField = document.getElementById("NewPlanName");
     expect(inputField).toBeTruthy();
   });
 

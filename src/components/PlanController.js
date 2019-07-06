@@ -4,7 +4,10 @@ import axios from "axios";
 const PlanController = ({
   availablePlans,
   currentPlan,
-  handle_PlanSelectorDropDown_onChange
+  newPlanName,
+  handle_PlanSelectorDropDown_onChange,
+  handle_NewPlanNameInput_onChange,
+  handle_SaveCurrentPlan_onClick
 }) => {
   const options = [];
   options.push(<option value={0}>--Select a Plan--</option>);
@@ -23,10 +26,16 @@ const PlanController = ({
       </select>
       <input
         type="text"
-        id="PlanName"
+        id="NewPlanName"
         placeholder="Input New Plan Name Here."
+        value={newPlanName}
+        onChange={event => handle_NewPlanNameInput_onChange(event)}
       />
-      <button type="button" id="SavePlan">
+      <button
+        type="button"
+        id="SavePlan"
+        onClick={handle_SaveCurrentPlan_onClick}
+      >
         Save Current Plan
       </button>
       <button type="button" id="SaveAsNewPlan">
